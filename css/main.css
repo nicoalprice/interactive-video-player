@@ -1,0 +1,16 @@
+// CSS for Interactive Video Player //
+
+.wrapper {
+    width: 100%;
+}
+
+video {
+    width: 100%;
+}
+
+.transcript {
+    margin: auto;
+    width: 90%;
+    font-family: 'Varela', sans-serif;
+    font-size: 1em;
+}
