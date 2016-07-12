@@ -7,6 +7,7 @@ function initializeVideo() {
     // Set object references
     vid = document.getElementById("my-video");
     playBtn = document.getElementById("play-pause-btn");
+    seekBar = document.getElementById("seek-slider");
     // Set event listeners
     playBtn.addEventListener("click", playPause, false);
 }
@@ -15,6 +16,7 @@ window.onload = initializeVideo;
 
 // Implement the play and pause buttons.
 
+// Switch between play and pause.
 function playPause() {
     if (vid.paused == true) {
         vid.play();
@@ -34,6 +36,8 @@ function playPause() {
 A user should be able to click anywhere on the playback bar to jump to that part of the video.
 As the video plays the playback bar should fill in.
 As the video plays the current time should be displayed and updated e.g. 0:10 / 11:34. */
+
+
 
 /* Use Javascript or CSS to hide and show the video player button on mouse hover states.
 Only the progress bar should remain. */
