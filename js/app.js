@@ -1,16 +1,28 @@
+// Variables
+var vid, playBtn, seekBar;
 
+
+// Initialize video player
+function initializeVideo() {
+    // Set object references
+    vid = document.getElementById("my-video");
+    playBtn = document.getElementById("play-pause-btn");
+    // Set event listeners
+    playBtn.addEventListener("click", playPause, false);
+}
+
+window.onload = initializeVideo;
 
 // Implement the play and pause buttons.
 
-function playPause(btn, vid) {
-    var vid = document.getElementById(vid);
+function playPause() {
     if (vid.paused == true) {
         vid.play();
-        btn.innerHTML = "<img src='icons/pause-icon.png' alt='pause'>";
+        playBtn.innerHTML = "<img src='icons/pause-icon.png' alt='pause'>";
     }
     else {
         vid.pause();
-        btn.innerHTML = "<img src='icons/play-icon.png' alt='play'>";
+        playBtn.innerHTML = "<img src='icons/play-icon.png' alt='play'>";
     }
 }
 

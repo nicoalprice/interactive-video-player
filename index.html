@@ -15,19 +15,21 @@
         </header>
 
         <div class="wrapper">
-            <div id="video-box"></div>
+            <div id="video-box">
             <!-- Embed the video using HTML. -->
                 <video id="my-video" controls>
                     <source src="video/video.mp4" type="video/mp4">
                     <source src="video/video.ogg" type="video/ogg">
                     <track label="English" kind="subtitles" srclang="en" src="video/captions.vtt" default>
                 </video>
-                <!-- Add the transcript below the video (as shown in the mockup file).
-                Use the captions.txt file for the text. Add appropriate <p> tags around the text. -->
+
                 <div id="video-controls">
-                    <button id="play-pause" onclick="playPause(this,'my-video')"><img src="icons/play-icon.png" alt="play"></button>
+                    <button id="play-pause-btn"><img src="icons/play-icon.png" alt="play"></button>
                 </div>
             </div>
+
+         <!-- Add the transcript below the video (as shown in the mockup file).
+        Use the captions.txt file for the text. Add appropriate <p> tags around the text. -->
 
         <div class="transcript">
         <p>Now that we've looked at the architecture of the internet, let's see how you might connect your personal devices to the internet inside your house.</p>

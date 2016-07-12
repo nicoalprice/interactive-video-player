@@ -7,7 +7,6 @@
 #video-box {
     margin: auto;
     width: 100%;
-    opacity: .7;
 }
 
 video {
@@ -16,6 +15,7 @@ video {
 
 #video-controls {
     background: black;
+    opacity: .7;
 }
 
 .transcript {
