@@ -2,6 +2,18 @@
 
 // Implement the play and pause buttons.
 
+function playPause(btn, vid) {
+    var vid = document.getElementById(vid);
+    if (vid.paused == true) {
+        vid.play();
+        btn.innerHTML = "<img src='icons/pause-icon.png' alt='pause'>";
+    }
+    else {
+        vid.pause();
+        btn.innerHTML = "<img src='icons/play-icon.png' alt='play'>";
+    }
+}
+
 // Add volume button that lets you mute the sound or turn it on.
 
 // Implement the fullscreen button.
