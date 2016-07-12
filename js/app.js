@@ -1,5 +1,5 @@
 // Variables
-var vid, playBtn, seekBar;
+var vid, playBtn, seekBar, currentTime;
 
 
 // Initialize video player
@@ -8,8 +8,15 @@ function initializeVideo() {
     vid = document.getElementById("my-video");
     playBtn = document.getElementById("play-pause-btn");
     seekBar = document.getElementById("seek-slider");
+    currentTime = document.getElementById("current-time");
+
     // Set event listeners
     playBtn.addEventListener("click", playPause, false);
+    seekBar.addEventListener("change", vidSeek, false);
+    vid.addEventListener("timeupdate", seekTimeUpdate, false);
+
+    // Start seek marker at 0 before video plays
+
 }
 
 window.onload = initializeVideo;
@@ -30,14 +37,45 @@ function playPause() {
 
 // Add volume button that lets you mute the sound or turn it on.
 
+/* function volumeControl {
+
+}
+*/
+
 // Implement the fullscreen button.
 
-/* Implement the playback progress control.
-A user should be able to click anywhere on the playback bar to jump to that part of the video.
-As the video plays the playback bar should fill in.
-As the video plays the current time should be displayed and updated e.g. 0:10 / 11:34. */
+/*
 
+function fullScreen() {
 
+}
+
+*/
+
+/* Implement the playback progress control. */
+
+function vidSeek() {
+    /* A user should be able to click anywhere on the playback bar to jump to that part of the video. */
+    var seek = vid.duration * (seekBar.value / 100);
+    vid.currentTime = seek;
+}
+
+/* As the video plays the playback bar should fill in. */
+
+function seekTimeUpdate() {
+    var newTime = vid.currentTime * (100 / vid.duration);
+    seekBar.value = newTime;
+
+/* As the video plays the current time should be displayed and updated e.g. 0:10 / 11:34. */
+    var currentMinutes = Math.floor(vid.currentTime / 60);
+    var currentSeconds = Math.floor(vid.currentTime - currentMinutes * 60);
+
+    if (currentSeconds < 10) {
+        currentSeconds = "0"+currentSeconds;
+    }
+
+    currentTime.innerHTML = currentMinutes + ":" + currentSeconds;
+}
 
 /* Use Javascript or CSS to hide and show the video player button on mouse hover states.
 Only the progress bar should remain. */

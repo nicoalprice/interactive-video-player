@@ -18,9 +18,17 @@ video {
     opacity: .7;
 }
 
+#seek-slider {
+    width: 60%;
+}
+
 .transcript {
     margin: auto;
     width: 90%;
     font-family: 'Varela', sans-serif;
     font-size: 1em;
+}
+
+#current-time {
+    color: white;
 }

@@ -18,7 +18,7 @@
 
             <div id="video-box">
             <!-- Embed the video using HTML. -->
-                <video id="my-video" controls>
+                <video id="my-video">
                     <source src="video/video.mp4" type="video/mp4">
                     <source src="video/video.ogg" type="video/ogg">
                     <track label="English" kind="subtitles" srclang="en" src="video/captions.vtt" default>
@@ -26,6 +26,7 @@
                 <div id="video-controls">
                     <button id="play-pause-btn"><img src="icons/play-icon.png" alt="play"></button>
                     <input id="seek-slider" type="range" min="0" max="100" step="1">
+                    <span id="current-time"></span>
 
                 </div>
             </div>
