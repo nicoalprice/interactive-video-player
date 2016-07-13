@@ -1,11 +1,12 @@
 // Variables
-var vid, playButton, seekBar, currentTimeText, durationTimeText, muteButton, volumeBar, fullScreen, captionButton;
+var vid, videoBox, playButton, seekBar, currentTimeText, durationTimeText, muteButton, volumeBar, fullScreen, captionButton, controls;
 
 
 // Initialize video player
 function initializeVideo() {
     // Set object references
     vid = document.getElementById("my-video");
+    videoBox = document.getElementById("video-box");
     playButton = document.getElementById("play-pause-btn");
     seekBar = document.getElementById("seek-slider");
     currentTimeText = document.getElementById("current-time");
@@ -14,6 +15,7 @@ function initializeVideo() {
     captionButton = document.getElementById("caption-button");
     volumeBar = document.getElementById("volume-bar");
     fullScreen = document.getElementById("full-screen");
+    controls = document.getElementById("video-controls");
 
     // Set event listeners
     playButton.addEventListener("click", playPause, false);
@@ -23,6 +25,7 @@ function initializeVideo() {
     volumeBar.addEventListener("change", volumeControl, false);
     muteButton.addEventListener("click", mute, false);
     fullScreen.addEventListener("click", screenSize, false);
+    videoBox.addEventListener("onmouseout", hideControls, false);
 }
 
 window.onload = initializeVideo;
@@ -119,6 +122,10 @@ function seekTimeUpdate() {
 }
 
 /* Use Javascript or CSS to hide and show the video player button on mouse hover states. Only the progress bar should remain. */
+
+function hideControls() {
+    controls.style.display = "none";
+}
 
 /* As the media playback time changes, sentences in the transcript should highlight.
 Use JavaScript to listen for those changes and apply a highlight to the appropriate sentence.
