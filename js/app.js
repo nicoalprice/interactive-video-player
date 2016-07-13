@@ -100,8 +100,7 @@ function seekTimeUpdate() {
     curTime.innerHTML = currentMinutes + ":" + currentSeconds;
 }
 
-/* Use Javascript or CSS to hide and show the video player button on mouse hover states.
-Only the progress bar should remain. */
+/* Use Javascript or CSS to hide and show the video player button on mouse hover states. Only the progress bar should remain. */
 
 /* As the media playback time changes, sentences in the transcript should highlight.
 Use JavaScript to listen for those changes and apply a highlight to the appropriate sentence.
@@ -112,16 +111,14 @@ You can use the captions.vtt file to see the times at which the words are spoken
 
 // Embed the .vtt file as a closed captioning track and add a button to video controls to toggle captions on and off.
 
-/*
 function closedCaptions() {
-    if (vid.something) {
-
+    if (vid.textTracks[0].mode == "hidden") {
+        vid.textTracks[0].mode = "showing";
     }
     else {
-
+        vid.textTracks[0].mode = "hidden";
     }
 }
-*/
 
 // A creative and thoughtful responsive design.
 
