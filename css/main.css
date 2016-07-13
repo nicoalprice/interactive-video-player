@@ -27,6 +27,13 @@ video {
     width: 50%;
 }
 
+input[type='range'] {
+    color: orange;
+    background: pink;
+    border-radius: 100%;
+    cursor: pointer;
+}
+
 .transcript {
     margin: auto;
     width: 90%;
