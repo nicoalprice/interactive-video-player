@@ -25,7 +25,8 @@ function initializeVideo() {
     volumeBar.addEventListener("change", volumeControl, false);
     muteButton.addEventListener("click", mute, false);
     fullScreen.addEventListener("click", screenSize, false);
-    videoBox.addEventListener("onmouseout", hideControls, false);
+    videoBox.addEventListener("mouseleave", hideControls, false);
+    videoBox.addEventListener("mouseenter", showControls, false);
 }
 
 window.onload = initializeVideo;
@@ -124,7 +125,11 @@ function seekTimeUpdate() {
 /* Use Javascript or CSS to hide and show the video player button on mouse hover states. Only the progress bar should remain. */
 
 function hideControls() {
-    controls.style.display = "none";
+    controls.style.visibility = "hidden";
+}
+
+function showControls() {
+    controls.style.visibility = "visible";
 }
 
 /* As the media playback time changes, sentences in the transcript should highlight.
