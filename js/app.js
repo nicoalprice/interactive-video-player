@@ -1,63 +1,84 @@
 // Variables
-var vid, playBtn, seekBar, currentTime;
+var vid, playButton, seekBar, curTime, muteButton, volumeBar, fullScreen;
 
 
 // Initialize video player
 function initializeVideo() {
     // Set object references
     vid = document.getElementById("my-video");
-    playBtn = document.getElementById("play-pause-btn");
+    playButton = document.getElementById("play-pause-btn");
     seekBar = document.getElementById("seek-slider");
-    currentTime = document.getElementById("current-time");
+    curTime = document.getElementById("current-time");
+    muteButton = document.getElementById("mute");
+    volumeBar = document.getElementById("volume-bar");
+    fullScreen = document.getElementById("full-screen");
 
     // Set event listeners
-    playBtn.addEventListener("click", playPause, false);
+    playButton.addEventListener("click", playPause, false);
     seekBar.addEventListener("change", vidSeek, false);
     vid.addEventListener("timeupdate", seekTimeUpdate, false);
-
-    // Start seek marker at 0 before video plays
-
+    volumeBar.addEventListener("change", volumeControl, false);
+    muteButton.addEventListener("click", mute, false);
+    fullScreen.addEventListener("click", screenSize, false);
 }
 
 window.onload = initializeVideo;
 
 // Implement the play and pause buttons.
-
 // Switch between play and pause.
 function playPause() {
     if (vid.paused == true) {
         vid.play();
-        playBtn.innerHTML = "<img src='icons/pause-icon.png' alt='pause'>";
+        playButton.innerHTML = "<img src='icons/pause-icon.png' alt='pause'>";
     }
     else {
         vid.pause();
-        playBtn.innerHTML = "<img src='icons/play-icon.png' alt='play'>";
+        playButton.innerHTML = "<img src='icons/play-icon.png' alt='play'>";
     }
 }
 
 // Add volume button that lets you mute the sound or turn it on.
 
-/* function volumeControl {
-
+function volumeControl() {
+    vid.volume = volumeBar.value;
 }
-*/
+
+function mute() {
+    if (vid.muted == false) {
+        // Mute the video
+        vid.muted = true;
+        // Update the button text
+        muteButton.innerHTML = "<img src='icons/volume-on-icon.png'>";
+        // Update volume bar
+          volumeBar.value = 0;
+    } else {
+        // Unmute the video
+        vid.muted = false;
+        // Update the button text
+        muteButton.innerHTML = "<img src='icons/volume-off-icon.png'>";
+        //Set video bar back to previous value
+        volumeBar.value = vid.volume;
+  }
+}
 
 // Implement the fullscreen button.
 
-/*
-
-function fullScreen() {
-
+function screenSize() {
+    if (vid.requestFullscreen) {
+    vid.requestFullscreen();
+    } else if (vid.mozRequestFullScreen) {
+    vid.mozRequestFullScreen(); // Firefox
+    } else if (vid.webkitRequestFullscreen) {
+    vid.webkitRequestFullscreen(); // Chrome and Safari
+    }
 }
-
-*/
 
 /* Implement the playback progress control. */
 
 function vidSeek() {
     /* A user should be able to click anywhere on the playback bar to jump to that part of the video. */
     var seek = vid.duration * (seekBar.value / 100);
-    vid.currentTime = seek;
+    vid.curTime = seek;
 }
 
 /* As the video plays the playback bar should fill in. */
@@ -74,7 +95,7 @@ function seekTimeUpdate() {
         currentSeconds = "0"+currentSeconds;
     }
 
-    currentTime.innerHTML = currentMinutes + ":" + currentSeconds;
+    curTime.innerHTML = currentMinutes + ":" + currentSeconds;
 }
 
 /* Use Javascript or CSS to hide and show the video player button on mouse hover states.
