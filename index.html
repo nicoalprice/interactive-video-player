@@ -21,12 +21,12 @@
                 <video id="my-video">
                     <source src="video/video.mp4" type="video/mp4">
                     <source src="video/video.ogg" type="video/ogg">
-                    <track id="captions" label="English" kind="subtitles" srclang="en" src="video/captions.vtt" >
+                    <track id="captions" label="English" kind="subtitles" srclang="en" src="video/captions.vtt" mode="hidden">
                 </video>
                 <div id="video-controls">
                     <button id="play-pause-btn"><img src="icons/play-icon.png" alt="play"></button>
                     <input id="seek-slider" type="range" min="0" max="100" step="1" value="0">
-                    <span id="current-time"></span>
+                    <span id="current-time"></span> / <span id="duration-time"></span>
                     <button type="button" id="caption-button">CC</button>
                     <button type="button" id="mute"><img src="icons/volume-off-icon.png"></button>
                     <input type="range" id="volume-bar" min="0" max="1" step="0.1" value=".5">

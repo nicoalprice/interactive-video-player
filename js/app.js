@@ -1,5 +1,5 @@
 // Variables
-var vid, playButton, seekBar, curTime, muteButton, volumeBar, fullScreen, captionButton;
+var vid, playButton, seekBar, currentTimeText, durationTimeText, muteButton, volumeBar, fullScreen, captionButton;
 
 
 // Initialize video player
@@ -8,7 +8,8 @@ function initializeVideo() {
     vid = document.getElementById("my-video");
     playButton = document.getElementById("play-pause-btn");
     seekBar = document.getElementById("seek-slider");
-    curTime = document.getElementById("current-time");
+    currentTimeText = document.getElementById("current-time");
+    durationTimeText = document.getElementById("duration-time");
     muteButton = document.getElementById("mute");
     captionButton = document.getElementById("caption-button");
     volumeBar = document.getElementById("volume-bar");
@@ -80,11 +81,20 @@ function screenSize() {
 function vidSeek() {
     /* A user should be able to click anywhere on the playback bar to jump to that part of the video. */
     var seek = vid.duration * (seekBar.value / 100);
-    vid.curTime = seek;
+    vid.currentTime = seek;
 }
 
-/* As the video plays the playback bar should fill in. */
+/* Pause the video when the slider handle is being dragged (copied from treehouse blog post) */
+seekBar.addEventListener("mousedown", function() {
+      vid.pause();
+});
 
+// Play the video when the slider handle is dropped
+seekBar.addEventListener("mouseup", function() {
+      vid.play();
+});
+
+/* As the video plays the playback bar should fill in. */
 function seekTimeUpdate() {
     var newTime = vid.currentTime * (100 / vid.duration);
     seekBar.value = newTime;
@@ -97,7 +107,15 @@ function seekTimeUpdate() {
         currentSeconds = "0"+currentSeconds;
     }
 
-    curTime.innerHTML = currentMinutes + ":" + currentSeconds;
+    var durationMinutes = Math.floor(vid.duration / 60);
+    var durationSeconds = Math.floor(vid.duration - durationMinutes * 60);
+
+    if (durationSeconds < 10) {
+        durationSeconds = "0"+durationSeconds;
+    }
+
+    currentTimeText.innerHTML = currentMinutes + ":" + currentSeconds;
+    durationTimeText.innerHTML = durationMinutes + ":" + durationSeconds;
 }
 
 /* Use Javascript or CSS to hide and show the video player button on mouse hover states. Only the progress bar should remain. */

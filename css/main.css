@@ -21,6 +21,7 @@ video {
     height: 20px;
     bottom: 40px;
     margin: auto;
+    color: white;
 }
 
 #seek-slider {
