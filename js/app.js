@@ -27,6 +27,8 @@ function initializeVideo() {
     fullScreen.addEventListener("click", screenSize, false);
     videoBox.addEventListener("mouseleave", hideControls, false);
     videoBox.addEventListener("mouseenter", showControls, false);
+    vid.addEventListener("playing", showProgress, false);
+    vid.addEventListener("paused", showProgress, false);
 }
 
 window.onload = initializeVideo;
@@ -126,6 +128,10 @@ function seekTimeUpdate() {
 
 function hideControls() {
     controls.style.visibility = "hidden";
+}
+
+function showProgress() {
+    seekBar.style.visibility = "visible";
 }
 
 function showControls() {
