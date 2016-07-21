@@ -209,5 +209,6 @@ function playBack() {
 }
 // Playback controls include buffering progress of the downloaded video.
 /* Set default video playback speed */
+// vid.buffered;
 
 // When the user clicks on any sentence in the transcript the video player jumps to the appropriate time in the video.
