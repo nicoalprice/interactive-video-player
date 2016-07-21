@@ -26,13 +26,24 @@ video {
 
 #seek-slider {
     width: 50%;
+    background: purple;
+    color: pink;
 }
 
-input[type='range'] {
-    color: orange;
-    background: pink;
+/*input[type='range'] {
+    background: yellow;
+    color: green;
     border-radius: 100%;
     cursor: pointer;
+}*/
+
+#play-pause-btn,
+#mute,
+#caption-button,
+#volume-bar,
+#full-screen {
+    background: transparent;
+    border: none;
 }
 
 .transcript {
@@ -40,8 +51,4 @@ input[type='range'] {
     width: 90%;
     font-family: 'Varela', sans-serif;
     font-size: 1em;
-}
-
-#current-time {
-    color: white;
 }

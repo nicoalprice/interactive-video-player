@@ -47,6 +47,7 @@ function playPause() {
 }
 
 // Add volume button that lets you mute the sound or turn it on.
+// Still need to fix how volume level re-sets after mute/unmute.
 
 function volumeControl() {
     vid.volume = volumeBar.value;
@@ -100,7 +101,7 @@ seekBar.addEventListener("mouseup", function() {
       vid.play();
 });
 
-/* As the video plays the playback bar should fill in. */
+/* As the video plays, the playback bar should fill in. */
 function seekTimeUpdate() {
     var newTime = vid.currentTime * (100 / vid.duration);
     seekBar.value = newTime;
@@ -126,6 +127,8 @@ function seekTimeUpdate() {
 
 /* Use Javascript or CSS to hide and show the video player button on mouse hover states. Only the progress bar should remain. */
 
+// Still need to make progress bar go away when video is not playing and mouse is not hovering.
+
 function hideControls() {
     controls.style.visibility = "hidden";
 }
@@ -141,6 +144,33 @@ function showControls() {
 /* As the media playback time changes, sentences in the transcript should highlight.
 Use JavaScript to listen for those changes and apply a highlight to the appropriate sentence.
 You can use the captions.vtt file to see the times at which the words are spoken in the video. */
+
+/* Idea seen in chat
+
+//Highlight transcript
+video.addEventListener('timeupdate', function(){
+  // var startHighlight = video.currentTime;
+    var highlight = document.querySelectorAll('data-start');
+    function startHighlight () {
+
+      startHighlight.classList.remove('highlight');
+      startHighlight.classList.add('highlight');
+    }
+    if (highlight > 0 && highlight < 4.13) {
+      startHighlight(0);
+  } else if (highlight > 4.13 && highlight < 7.535) {
+      startHighlight(4.13);
+  } else if (highlight > 7.535 && highlight < 11.27) {
+      startHighlight(7.535);
+  } else if (highlight > 11.27 && highlight < 13.96) {
+      startHighlight(11.27);
+  } else if (highlight > 13.96 && highlight < 17.94) {
+      startHighlight(13.96);
+  } else if (highlight > 17.94 && highlight < 22.37) {
+      startHighlight(17.94);
+  }
+});
+*/
 
 
 // EXCEEDS EXPECTATIONS //
