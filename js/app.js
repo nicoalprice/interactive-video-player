@@ -1,5 +1,5 @@
 // Variables
-var vid, videoBox, playButton, seekBar, currentTimeText, durationTimeText, muteButton, volumeBar, fullScreen, captionButton, controls;
+var vid, videoBox, playButton, seekBar, currentTimeText, durationTimeText, muteButton, volumeBar, fullScreen, captionButton, speed, controls;
 
 
 // Initialize video player
@@ -13,6 +13,7 @@ function initializeVideo() {
     durationTimeText = document.getElementById("duration-time");
     muteButton = document.getElementById("mute");
     captionButton = document.getElementById("caption-button");
+    speed = document.getElementById("playback-speed");
     volumeBar = document.getElementById("volume-bar");
     fullScreen = document.getElementById("full-screen");
     controls = document.getElementById("video-controls");
@@ -24,6 +25,7 @@ function initializeVideo() {
     captionButton.addEventListener("click", closedCaptions, false);
     volumeBar.addEventListener("change", volumeControl, false);
     muteButton.addEventListener("click", mute, false);
+    speed.addEventListener("click", playBack, false);
     fullScreen.addEventListener("click", screenSize, false);
     videoBox.addEventListener("mouseleave", hideControls, false);
     videoBox.addEventListener("mouseenter", showControls, false);
@@ -149,7 +151,7 @@ You can use the captions.vtt file to see the times at which the words are spoken
 
 //Highlight transcript
 video.addEventListener('timeupdate', function(){
-  // var startHighlight = video.currentTime;
+  // var startHighlight = vid.currentTime;
     var highlight = document.querySelectorAll('data-start');
     function startHighlight () {
 
@@ -194,5 +196,19 @@ function closedCaptions() {
 //done
 
 // Playback controls include buffering progress of the downloaded video.
+/* Set default video playback speed */
+/* Need to add icon for this */
 
+vid.defaultPlayRate = 1.0;
+
+function playBack() {
+    if (vid.playbackRate == 1.0) {
+        vid.playbackRate = 1.5;
+        speed.innerText = "1x";
+    }
+    else {
+        speed.innerText = "1.5x";
+        vid.playbackRate = 1.0;
+    }
+}
 // When the user clicks on any sentence in the transcript the video player jumps to the appropriate time in the video.

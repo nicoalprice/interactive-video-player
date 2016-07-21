@@ -41,6 +41,7 @@ video {
 #mute,
 #caption-button,
 #volume-bar,
+#playback-speed,
 #full-screen {
     background: transparent;
     border: none;
