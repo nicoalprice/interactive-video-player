@@ -48,12 +48,14 @@ function playPause() {
     }
 }
 
-// Add volume button that lets you mute the sound or turn it on.
-// Still need to fix how volume level re-sets after mute/unmute.
+// Volume control so viewer can adjust the volume level, not just mute or on.
 
 function volumeControl() {
     vid.volume = volumeBar.value;
 }
+
+// Add volume button that lets you mute the sound or turn it on.
+// Still need to fix how volume level re-sets after mute/unmute.
 
 function mute() {
     if (vid.muted == false) {
@@ -191,12 +193,6 @@ function closedCaptions() {
 // A creative and thoughtful responsive design.
 
 // Playback speed control or other helpful controls.
-
-// Volume control so viewer can adjust the volume level, not just mute or on.
-//done
-
-// Playback controls include buffering progress of the downloaded video.
-/* Set default video playback speed */
 /* Need to add icon for this */
 
 vid.defaultPlayRate = 1.0;
@@ -204,11 +200,14 @@ vid.defaultPlayRate = 1.0;
 function playBack() {
     if (vid.playbackRate == 1.0) {
         vid.playbackRate = 1.5;
-        speed.innerText = "1x";
+        speed.innerText = "1x"; //replace with icon
     }
     else {
-        speed.innerText = "1.5x";
         vid.playbackRate = 1.0;
+        speed.innerText = "1.5x"; //replace with icon
     }
 }
+// Playback controls include buffering progress of the downloaded video.
+/* Set default video playback speed */
+
 // When the user clicks on any sentence in the transcript the video player jumps to the appropriate time in the video.
