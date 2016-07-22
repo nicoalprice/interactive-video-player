@@ -1,5 +1,5 @@
 // Variables
-var vid, videoBox, playButton, seekBar, currentTimeText, durationTimeText, muteButton, volumeBar, fullScreen, captionButton, speed, controls;
+var vid, videoBox, playButton, progressBar, seekBar, bufferBar, currentTimeText, durationTimeText, muteButton, volumeBar, fullScreen, captionButton, speed, controls;
 
 
 // Initialize video player
@@ -8,7 +8,9 @@ function initializeVideo() {
     vid = document.getElementById("my-video");
     videoBox = document.getElementById("video-box");
     playButton = document.getElementById("play-pause-btn");
+    progressBar = document.getElementById("progress-bar");
     seekBar = document.getElementById("seek-slider");
+    bufferBar = document.getElementById("buffer-bar");
     currentTimeText = document.getElementById("current-time");
     durationTimeText = document.getElementById("duration-time");
     muteButton = document.getElementById("mute");
@@ -21,6 +23,7 @@ function initializeVideo() {
     // Set event listeners
     playButton.addEventListener("click", playPause, false);
     seekBar.addEventListener("change", vidSeek, false);
+    bufferBar.addEventListener("change", bufferUpdate, false);
     vid.addEventListener("timeupdate", seekTimeUpdate, false);
     captionButton.addEventListener("click", closedCaptions, false);
     volumeBar.addEventListener("change", volumeControl, false);
@@ -31,6 +34,10 @@ function initializeVideo() {
     videoBox.addEventListener("mouseenter", showControls, false);
     vid.addEventListener("playing", showProgress, false);
     vid.addEventListener("paused", showProgress, false);
+
+    // Set defaults
+        /* Set default video playback speed */
+        vid.defaultPlayRate = 1.0;
 }
 
 window.onload = initializeVideo;
@@ -96,14 +103,14 @@ function vidSeek() {
 }
 
 /* Pause the video when the slider handle is being dragged (copied from treehouse blog post) */
-seekBar.addEventListener("mousedown", function() {
-      vid.pause();
-});
-
-// Play the video when the slider handle is dropped
-seekBar.addEventListener("mouseup", function() {
-      vid.play();
-});
+//seekBar.addEventListener("mousedown", function() {
+//      vid.pause();
+//});
+//
+//// Play the video when the slider handle is dropped
+//seekBar.addEventListener("mouseup", function() {
+//      vid.play();
+//});
 
 /* As the video plays, the playback bar should fill in. */
 function seekTimeUpdate() {
@@ -138,7 +145,7 @@ function hideControls() {
 }
 
 function showProgress() {
-    seekBar.style.visibility = "visible";
+    progressBar.style.visibility = "visible";
 }
 
 function showControls() {
@@ -194,9 +201,6 @@ function closedCaptions() {
 
 // Playback speed control or other helpful controls.
 /* Need to add icon for this */
-
-vid.defaultPlayRate = 1.0;
-
 function playBack() {
     if (vid.playbackRate == 1.0) {
         vid.playbackRate = 1.5;
@@ -208,7 +212,15 @@ function playBack() {
     }
 }
 // Playback controls include buffering progress of the downloaded video.
-/* Set default video playback speed */
 // vid.buffered;
+
+function bufferUpdate() {
+    if (vid.buffered.length > 0) {
+    // Calculate the buffered bar progress value by percent
+    var bufferValue = (vid.buffered.end(0) / vid.duration) * 100;
+    // Update the buffered bar value
+    bufferBar.value = bufferValue;
+}
+}
 
 // When the user clicks on any sentence in the transcript the video player jumps to the appropriate time in the video.

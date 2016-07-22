@@ -25,7 +25,10 @@
                 </video>
                 <div id="video-controls">
                     <button id="play-pause-btn"><img src="icons/play-icon.png" alt="play"></button>
-                    <input id="seek-slider" type="range" min="0" max="100" step="1" value="0">
+                    <div id="progress-bar">
+                        <div id="buffer-bar"></div>
+                        <progress id="seek-slider" max="100" value="0"></progress>
+                    </div>
                     <span id="current-time"></span> / <span id="duration-time"></span>
                     <button type="button" id="caption-button">CC</button>
                     <button type="button" id="playback-speed">1.5x</button>
@@ -39,7 +42,9 @@
         Use the captions.txt file for the text. Add appropriate <p> tags around the text. -->
 
             <div class="transcript">
-            <p>Now that we've looked at the architecture of the internet, let's see how you might connect your personal devices to the internet inside your house.</p>
+            <p>
+                <span data-start-time="0:00">Now that we've looked at the architecture of the internet, let's see how you might</span>
+                <span></span>connect your personal devices to the internet inside your house.</p>
             <p>Well there are many ways to connect to the internet, and most often people connect wirelessly. Let's look at an example of how you can connect to the internet.</p>
             <p>If you live in a city or a town, you probably have a coaxial cable for cable Internet, or a phone line if you have DSL, running to the outside of your house, that connects you to the Internet Service Provider, or ISP.</p>
             <p>If you live far out in the country, you'll more likely have a dish outside your house, connecting you wirelessly to your closest ISP, or you might also use the telephone system.</p>

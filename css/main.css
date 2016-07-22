@@ -24,18 +24,30 @@ video {
     color: white;
 }
 
-#seek-slider {
-    width: 50%;
-    background: purple;
-    color: pink;
+#progress-bar {
+    background-color: black;
+    width: 60%;
+    position: relative;
+    left: 10px;
 }
 
-/*input[type='range'] {
-    background: yellow;
-    color: green;
-    border-radius: 100%;
-    cursor: pointer;
-}*/
+#seek-slider {
+    width: 60%;
+    height: 20px;
+    position: absolute;
+    left: 0;
+    z-index: 1;
+    opacity: .6;
+    background-color: red;
+}
+
+#buffer-bar {
+    background-color: yellow;
+    width: 60%;
+    height: 20px;
+    position: absolute;
+    left: 0;
+}
 
 #play-pause-btn,
 #mute,
