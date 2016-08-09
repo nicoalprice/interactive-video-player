@@ -7,6 +7,7 @@
 #video-box {
     margin: auto;
     width: 100%;
+    overflow: hidden;
 }
 
 video {
@@ -15,48 +16,64 @@ video {
 
 #video-controls {
     background: black;
-/*    opacity: .6;*/
+    opacity: .6;
     position: relative;
-    bottom: 5px;
     width: 100%;
-    height: 30px;
-    bottom: 30px;
+    height: 40px;
     margin: auto;
     color: white;
 }
 
-/* #play-progress-bars {
+/* Progress Bars */
+
+/*
+ #play-progress-bars {
     position: absolute;
     bottom: 0;
+    left: 30px;
     width: 50%;
-    background-color: black;
+    color: red;
 }
-*/
 
 #progress-bar {
-    background-color: black;
-    height: 10px;
     position: absolute;
     left: 0;
     z-index: 2;
+    left: 30px;
+}
+*/
+
+progress[value]#seek-slider::-webkit-progress-value {
+    -webkit-appearance: none;
+    appearance: none;
+    color: red;
+    background-color: pink;
 }
 
-#seek-slider {
+#seek-slider::-webkit-progress-bar {
     width: 50%;
     height: 10px;
     position: absolute;
-    left: 0;
+    left: 40px;
+    bottom: 10px;
     z-index: 1;
     opacity: .6;
-    background-color: red;
+    background-color: white;
+    color: pink;
+}
+
+#seek-slider::-webkit-progress-value {
+    background-color: orange;
 }
 
 #buffer-bar {
     background-color: yellow;
     width: 50%;
     height: 10px;
+/*
     position: absolute;
-    left: 0;
+    left: 30px;
+*/
 }
 
 #play-pause-btn,
@@ -70,7 +87,7 @@ video {
     padding-left: 10px;
     float: left;
 }
-/*
+#times,
 #mute,
 #caption-button,
 #volume-bar,
@@ -78,11 +95,14 @@ video {
 #full-screen {
     float: right;
 }
-*/
 
 .transcript {
     margin: auto;
     width: 90%;
     font-family: 'Varela', sans-serif;
     font-size: 1em;
+}
+
+.highlight {
+    background-color: yellow;
 }

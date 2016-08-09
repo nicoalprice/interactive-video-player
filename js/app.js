@@ -1,26 +1,25 @@
-// Variables
-var vid, videoBox, playButton, progressBar, seekBar, bufferBar, currentTimeText, durationTimeText, muteButton, volumeBar, fullScreen, captionButton, speed, controls;
+/* ----- VARIABLES ----- */
+
+var vid = document.getElementById("my-video");
+var videoBox = document.getElementById("video-box");
+var playButton = document.getElementById("play-pause-btn");
+var progressBar = document.getElementById("progress-bar");
+var seekBar = document.getElementById("seek-slider");
+var bufferBar = document.getElementById("buffer-bar");
+var currentTimeText = document.getElementById("current-time");
+var durationTimeText = document.getElementById("duration-time");
+var muteButton = document.getElementById("mute");
+var captionButton = document.getElementById("caption-button");
+var speed = document.getElementById("playback-speed");
+var volumeBar = document.getElementById("volume-bar");
+var fullScreen = document.getElementById("full-screen");
+var controls = document.getElementById("video-controls");
 
 
-// Initialize video player
+/* ----- INITIALIZE VIDEO PLAYER -----*/
+
 function initializeVideo() {
-    // Set object references
-    vid = document.getElementById("my-video");
-    videoBox = document.getElementById("video-box");
-    playButton = document.getElementById("play-pause-btn");
-    progressBar = document.getElementById("progress-bar");
-    seekBar = document.getElementById("seek-slider");
-    bufferBar = document.getElementById("buffer-bar");
-    currentTimeText = document.getElementById("current-time");
-    durationTimeText = document.getElementById("duration-time");
-    muteButton = document.getElementById("mute");
-    captionButton = document.getElementById("caption-button");
-    speed = document.getElementById("playback-speed");
-    volumeBar = document.getElementById("volume-bar");
-    fullScreen = document.getElementById("full-screen");
-    controls = document.getElementById("video-controls");
-
-    // Set event listeners
+    /* Set event listeners */
     playButton.addEventListener("click", playPause, false);
     seekBar.addEventListener("change", vidSeek, false);
     bufferBar.addEventListener("change", bufferUpdate, false);
@@ -35,14 +34,15 @@ function initializeVideo() {
     vid.addEventListener("playing", showProgress, false);
     vid.addEventListener("paused", showProgress, false);
 
-    // Set defaults
-        /* Set default video playback speed */
-        vid.defaultPlayRate = 1.0;
+
+    /* Set default video playback speed */
+    vid.defaultPlayRate = 1.0;
 }
 
+/* Initialize player on window load */
 window.onload = initializeVideo;
 
-// Implement the play and pause buttons.
+/* ----- PLAY/PAUSE BUTTON ----- */
 // Switch between play and pause.
 function playPause() {
     if (vid.paused == true) {
@@ -54,6 +54,8 @@ function playPause() {
         playButton.innerHTML = "<img src='icons/play-icon.png' alt='play'>";
     }
 }
+
+/* ----- VOLUME CONTROLS ----- */
 
 // Volume control so viewer can adjust the volume level, not just mute or on.
 
@@ -82,7 +84,7 @@ function mute() {
   }
 }
 
-// Implement the fullscreen button.
+/* ----- FULLSCREEN BUTTON ----- */
 
 function screenSize() {
     if (vid.requestFullscreen) {
@@ -94,29 +96,42 @@ function screenSize() {
     }
 }
 
-/* Implement the playback progress control. */
+/* ----- PROGRESS BAR ----- */
 
+/* A user should be able to click anywhere on the playback bar to jump to that part of the video. */
 function vidSeek() {
-    /* A user should be able to click anywhere on the playback bar to jump to that part of the video. */
     var seek = vid.duration * (seekBar.value / 100);
     vid.currentTime = seek;
 }
 
 /* Pause the video when the slider handle is being dragged (copied from treehouse blog post) */
-//seekBar.addEventListener("mousedown", function() {
-//      vid.pause();
-//});
-//
-//// Play the video when the slider handle is dropped
-//seekBar.addEventListener("mouseup", function() {
-//      vid.play();
-//});
+seekBar.addEventListener("mousedown", function() {
+    vid.pause();
+    });
+
+/*Play the video when the slider handle is dropped */
+seekBar.addEventListener("mouseup", function() {
+    vid.play();
+});
 
 /* As the video plays, the playback bar should fill in. */
 function seekTimeUpdate() {
     var newTime = vid.currentTime * (100 / vid.duration);
     seekBar.value = newTime;
 
+/* ---- BUFFER PROGRESS BAR ----- */
+
+/*function bufferUpdate() {
+    if (vid.buffered.length > 0) {
+// Calculate the buffered bar progress value by percent
+    var bufferValue = (vid.buffered.end(0) / vid.duration) * 100;
+// Update the buffered bar value
+    bufferBar.value = bufferValue;
+}
+}*/
+
+
+/* ----- TIME DISPLAY ----- */
 /* As the video plays the current time should be displayed and updated e.g. 0:10 / 11:34. */
     var currentMinutes = Math.floor(vid.currentTime / 60);
     var currentSeconds = Math.floor(vid.currentTime - currentMinutes * 60);
@@ -136,6 +151,7 @@ function seekTimeUpdate() {
     durationTimeText.innerHTML = durationMinutes + ":" + durationSeconds;
 }
 
+/* ----- HIDE/SHOW VIDEO CONTROLS ----- */
 /* Use Javascript or CSS to hide and show the video player button on mouse hover states. Only the progress bar should remain. */
 
 // Still need to make progress bar go away when video is not playing and mouse is not hovering.
@@ -152,41 +168,41 @@ function showControls() {
     controls.style.visibility = "visible";
 }
 
+/* ----- HIGHLIGHT TRANSCRIPT ----- */
 /* As the media playback time changes, sentences in the transcript should highlight.
 Use JavaScript to listen for those changes and apply a highlight to the appropriate sentence.
 You can use the captions.vtt file to see the times at which the words are spoken in the video. */
 
-/* Idea seen in chat
+/* Idea seen in chat */
 
-//Highlight transcript
-video.addEventListener('timeupdate', function(){
-  // var startHighlight = vid.currentTime;
+// Highlight transcript
+vid.addEventListener('timeupdate', function(){
+    var startHighlight = vid.currentTime;
     var highlight = document.querySelectorAll('data-start');
-    function startHighlight () {
-
-      startHighlight.classList.remove('highlight');
-      startHighlight.classList.add('highlight');
+    function startHighlight() {
+        startHighlight.classList.remove('highlight');
+        startHighlight.classList.add('highlight');
     }
-    if (highlight > 0 && highlight < 4.13) {
-      startHighlight(0);
-  } else if (highlight > 4.13 && highlight < 7.535) {
-      startHighlight(4.13);
-  } else if (highlight > 7.535 && highlight < 11.27) {
-      startHighlight(7.535);
-  } else if (highlight > 11.27 && highlight < 13.96) {
-      startHighlight(11.27);
-  } else if (highlight > 13.96 && highlight < 17.94) {
-      startHighlight(13.96);
-  } else if (highlight > 17.94 && highlight < 22.37) {
-      startHighlight(17.94);
-  }
+        if (highlight > 0 && highlight < 4.13) {
+            startHighlight(0);
+        } else if (highlight > 4.13 && highlight < 7.535) {
+            startHighlight(4.13);
+        } else if (highlight > 7.535 && highlight < 11.27) {
+            startHighlight(7.535);
+        } else if (highlight > 11.27 && highlight < 13.96) {
+            startHighlight(11.27);
+        } else if (highlight > 13.96 && highlight < 17.94) {
+            startHighlight(13.96);
+        } else if (highlight > 17.94 && highlight < 22.37) {
+            startHighlight(17.94);
+        } else if (highlight > 22.37 && highlight < 26.88) {
+            startHighlight(22.37);
+        }
 });
-*/
 
+/* ----- CLOSED CAPTIONS ----- */
 
-// EXCEEDS EXPECTATIONS //
-
-// Embed the .vtt file as a closed captioning track and add a button to video controls to toggle captions on and off.
+// Toggle captions on and off.
 
 function closedCaptions() {
     if (vid.textTracks[0].mode == "hidden") {
@@ -199,6 +215,7 @@ function closedCaptions() {
 
 // A creative and thoughtful responsive design.
 
+/* ----- PLAYBACK SPEED CONTROL ----- */
 // Playback speed control or other helpful controls.
 /* Need to add icon for this */
 function playBack() {
@@ -211,16 +228,6 @@ function playBack() {
         speed.innerText = "1.5x"; //replace with icon
     }
 }
-// Playback controls include buffering progress of the downloaded video.
-// vid.buffered;
 
-function bufferUpdate() {
-    if (vid.buffered.length > 0) {
-    // Calculate the buffered bar progress value by percent
-    var bufferValue = (vid.buffered.end(0) / vid.duration) * 100;
-    // Update the buffered bar value
-    bufferBar.value = bufferValue;
-}
-}
 
 // When the user clicks on any sentence in the transcript the video player jumps to the appropriate time in the video.
