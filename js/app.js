@@ -172,28 +172,33 @@ You can use the captions.vtt file to see the times at which the words are spoken
 
 // Highlight transcript
 function highlightText() {
+    //Get current video time
     var startHighlight = vid.currentTime;
     console.log(startHighlight);
+    //Find transcript cues in HTML document
     var highlight = document.querySelectorAll('data-start');
-    function startHighlight() {
+    //Highlight span corresponding to current time
+    function addHighlight() {
         startHighlight.classList.remove('boo');
         startHighlight.classList.add('boo');
     }
         if (highlight > 0 && highlight < 4.13) {
-            startHighlight(0);
+            addHighlight(0);
         } else if (highlight > 4.13 && highlight < 7.535) {
-            startHighlight(4.13);
+            addHighlight(4.13);
         } else if (highlight > 7.535 && highlight < 11.27) {
-            startHighlight(7.535);
+            addHighlight(7.535);
         } else if (highlight > 11.27 && highlight < 13.96) {
-            startHighlight(11.27);
+            addHighlight(11.27);
         } else if (highlight > 13.96 && highlight < 17.94) {
-            startHighlight(13.96);
+            addHighlight(13.96);
         } else if (highlight > 17.94 && highlight < 22.37) {
-            startHighlight(17.94);
+            addHighlight(17.94);
         } else if (highlight > 22.37 && highlight < 26.88) {
-            startHighlight(22.37);
+            addHighlight(22.37);
         }
+
+    //Add something here that gets the function going
 }
 
 /* ----- CLOSED CAPTIONS ----- */
