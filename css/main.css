@@ -24,7 +24,7 @@ video {
     color: white;
 }
 
-/* Progress Bars */
+/* ----- Progress Bars ----- */
 
 /*
  #play-progress-bars {
@@ -43,14 +43,7 @@ video {
 }
 */
 
-progress[value]#seek-slider::-webkit-progress-value {
-    -webkit-appearance: none;
-    appearance: none;
-    color: red;
-    background-color: pink;
-}
-
-#seek-slider::-webkit-progress-bar {
+#seek-slider {
     width: 50%;
     height: 10px;
     position: absolute;
@@ -62,14 +55,11 @@ progress[value]#seek-slider::-webkit-progress-value {
     color: pink;
 }
 
-#seek-slider::-webkit-progress-value {
-    background-color: orange;
-}
-
 #buffer-bar {
     background-color: yellow;
     width: 50%;
     height: 10px;
+    display: none;
 /*
     position: absolute;
     left: 30px;
@@ -103,6 +93,6 @@ progress[value]#seek-slider::-webkit-progress-value {
     font-size: 1em;
 }
 
-.highlight {
+.boo {
     background-color: yellow;
 }

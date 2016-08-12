@@ -22,7 +22,7 @@ function initializeVideo() {
     /* Set event listeners */
     playButton.addEventListener("click", playPause, false);
     seekBar.addEventListener("change", vidSeek, false);
-    bufferBar.addEventListener("change", bufferUpdate, false);
+//    bufferBar.addEventListener("change", bufferUpdate, false);
     vid.addEventListener("timeupdate", seekTimeUpdate, false);
     captionButton.addEventListener("click", closedCaptions, false);
     volumeBar.addEventListener("change", volumeControl, false);
@@ -33,7 +33,11 @@ function initializeVideo() {
     videoBox.addEventListener("mouseenter", showControls, false);
     vid.addEventListener("playing", showProgress, false);
     vid.addEventListener("paused", showProgress, false);
+    vid.addEventListener("timeupdate", highlightText, false);
 
+
+    /* Set default volume level. */
+    vid.volume = 0.5;
 
     /* Set default video playback speed */
     vid.defaultPlayRate = 1.0;
@@ -64,7 +68,6 @@ function volumeControl() {
 }
 
 // Add volume button that lets you mute the sound or turn it on.
-// Still need to fix how volume level re-sets after mute/unmute.
 
 function mute() {
     if (vid.muted == false) {
@@ -73,7 +76,9 @@ function mute() {
         // Update the button text
         muteButton.innerHTML = "<img src='icons/volume-on-icon.png'>";
         // Update volume bar
-          volumeBar.value = 0;
+        volumeBar.value = 0;
+        // Need to figure out why slider doesn't go all the way down to zero.
+
     } else {
         // Unmute the video
         vid.muted = false;
@@ -96,43 +101,22 @@ function screenSize() {
     }
 }
 
-/* ----- PROGRESS BAR ----- */
+/* ----- PROGRESS BAR & TIME DISPLAY ----- */
 
-/* A user should be able to click anywhere on the playback bar to jump to that part of the video. */
+/* Click anywhere on the playback bar to jump to that part of the video. */
 function vidSeek() {
+    //Calculate new time
     var seek = vid.duration * (seekBar.value / 100);
+    //Update video time
     vid.currentTime = seek;
 }
 
-/* Pause the video when the slider handle is being dragged (copied from treehouse blog post) */
-seekBar.addEventListener("mousedown", function() {
-    vid.pause();
-    });
-
-/*Play the video when the slider handle is dropped */
-seekBar.addEventListener("mouseup", function() {
-    vid.play();
-});
-
-/* As the video plays, the playback bar should fill in. */
 function seekTimeUpdate() {
+    /* Fill in playback bar as video plays */
     var newTime = vid.currentTime * (100 / vid.duration);
     seekBar.value = newTime;
 
-/* ---- BUFFER PROGRESS BAR ----- */
-
-/*function bufferUpdate() {
-    if (vid.buffered.length > 0) {
-// Calculate the buffered bar progress value by percent
-    var bufferValue = (vid.buffered.end(0) / vid.duration) * 100;
-// Update the buffered bar value
-    bufferBar.value = bufferValue;
-}
-}*/
-
-
-/* ----- TIME DISPLAY ----- */
-/* As the video plays the current time should be displayed and updated e.g. 0:10 / 11:34. */
+    /* Display current time / duration */
     var currentMinutes = Math.floor(vid.currentTime / 60);
     var currentSeconds = Math.floor(vid.currentTime - currentMinutes * 60);
 
@@ -150,6 +134,17 @@ function seekTimeUpdate() {
     currentTimeText.innerHTML = currentMinutes + ":" + currentSeconds;
     durationTimeText.innerHTML = durationMinutes + ":" + durationSeconds;
 }
+
+/* ---- BUFFER PROGRESS BAR ----- */
+
+/*function bufferUpdate() {
+    if (vid.buffered.length > 0) {
+// Calculate the buffered bar progress value by percent
+    var bufferValue = (vid.buffered.end(0) / vid.duration) * 100;
+// Update the buffered bar value
+    bufferBar.value = bufferValue;
+}
+}*/
 
 /* ----- HIDE/SHOW VIDEO CONTROLS ----- */
 /* Use Javascript or CSS to hide and show the video player button on mouse hover states. Only the progress bar should remain. */
@@ -176,12 +171,13 @@ You can use the captions.vtt file to see the times at which the words are spoken
 /* Idea seen in chat */
 
 // Highlight transcript
-vid.addEventListener('timeupdate', function(){
+function highlightText() {
     var startHighlight = vid.currentTime;
+    console.log(startHighlight);
     var highlight = document.querySelectorAll('data-start');
     function startHighlight() {
-        startHighlight.classList.remove('highlight');
-        startHighlight.classList.add('highlight');
+        startHighlight.classList.remove('boo');
+        startHighlight.classList.add('boo');
     }
         if (highlight > 0 && highlight < 4.13) {
             startHighlight(0);
@@ -198,7 +194,7 @@ vid.addEventListener('timeupdate', function(){
         } else if (highlight > 22.37 && highlight < 26.88) {
             startHighlight(22.37);
         }
-});
+}
 
 /* ----- CLOSED CAPTIONS ----- */
 

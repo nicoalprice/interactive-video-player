@@ -27,15 +27,15 @@
                     <div id="play-progress-bars">
                         <button id="play-pause-btn"><img src="icons/play-icon.png" alt="play"></button>
                         <div id="progress-bar">
-                            <progress id="buffer-bar" max="100" value="0"></progress>
-                            <progress id="seek-slider" max="100" value="0"></progress>
+                            <input type="range" id="buffer-bar" max="100" value="0">
+                            <input type="range" id="seek-slider" max="100" value="0">
                     </div>
                         </div>
                     <div id="times"><span id="current-time"></span> / <span id="duration-time"></span></div>
                     <button type="button" id="caption-button">CC</button>
                     <button type="button" id="playback-speed">1.5x</button>
                     <button type="button" id="mute"><img src="icons/volume-off-icon.png"></button>
-                    <input type="range" id="volume-bar" min="0" max="1" step="0.1" value=".5">
+                    <input type="range" id="volume-bar" min="0" max="1" step="0.1">
                     <button type="button" id="full-screen"><img src="icons/fullscreen-icon.png"></button>
                 </div>
             </div>
@@ -44,10 +44,10 @@
         Use the captions.txt file for the text. Add appropriate <p> tags around the text. -->
 
             <div class="transcript">
-            <p><span data-start="0">Now that we've looked at the architecture of the internet, let's see how you might</span>
+            <p><span class="" data-start="0">Now that we've looked at the architecture of the internet, let's see how you might</span>
             <span data-start="4.13">connect your personal devices to the internet inside your house. </span></p>
             <p><span data-start="7.535">Well, there are many ways to connect to the internet, and </span>
-            <span data-start="11.27">most often people will connect wirelessly. </span>
+            <span data-start="11.27">most often people connect wirelessly. </span>
             <span data-start="13.96">Let's look at an example of how you can connect to the internet. </span></p>
             <p><span data-start="17.94">If you live in a city or a town, you probably hav a coaxial cable for </span>
             <span data-start="22.37">cable Internet, or a phone line if you have DSL, running to the outside of </span>
@@ -59,7 +59,7 @@
             <span data-start="46.3">it travels over radio waves from your roof, </span>
             <span data-start="49.27">the first stop a wire will make once inside your house, is at your modem. </span></p>
             <p><span data-start="53.76">A modem is what connects the internet to your network at home. </span>
-            <span data-start="57.78">A few common residential modems are DSL are...</span>
+            <span data-start="57.78">A few common residential modems are DSL or...</span>
             </p>
             </div>
 
