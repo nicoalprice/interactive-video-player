@@ -3,6 +3,7 @@
 var vid = document.getElementById("my-video");
 var videoBox = document.getElementById("video-box");
 var playButton = document.getElementById("play-pause-btn");
+var progressBar = document.getElementById("progress-bar");
 var seekBar = document.getElementById("seek-slider");
 var bufferBar = document.getElementById("buffer-bar");
 var currentTimeText = document.getElementById("current-time");
@@ -21,8 +22,8 @@ function initializeVideo() {
     /* Set event listeners */
     playButton.addEventListener("click", playPause, false);
     seekBar.addEventListener("change", vidSeek, false);
-//    bufferBar.addEventListener("change", bufferUpdate, false);
     vid.addEventListener("timeupdate", seekTimeUpdate, false);
+    vid.addEventListener("timeupdate", bufferUpdate, false);
     captionButton.addEventListener("click", closedCaptions, false);
     volumeBar.addEventListener("change", volumeControl, false);
     muteButton.addEventListener("click", mute, false);
@@ -136,14 +137,12 @@ function seekTimeUpdate() {
 
 /* ---- BUFFER PROGRESS BAR ----- */
 
-/*function bufferUpdate() {
-    if (vid.buffered.length > 0) {
-// Calculate the buffered bar progress value by percent
-    var bufferValue = (vid.buffered.end(0) / vid.duration) * 100;
-// Update the buffered bar value
+function bufferUpdate() {
+    // Calculate the buffered bar progress value by percent
+    var bufferValue = (100 / vid.duration) * vid.buffered.end(0);
+    // Update the buffered bar value
     bufferBar.value = bufferValue;
 }
-}*/
 
 /* ----- HIDE/SHOW VIDEO CONTROLS ----- */
 /* Use Javascript or CSS to hide and show the video player button on mouse hover states. Only the progress bar should remain. */

@@ -47,31 +47,30 @@ video::-webkit-media-controls {
     position: absolute;
     left: 40px;
     bottom: 20px;
-    z-index: 1;
+    border-radius: 5px;
+    background: transparent;
 }
 
-#seek-slider[type="range"]::-webkit-slider-thumb {
-    -webkit-appearance: none;
-    -moz-appearance: none;
-    background-color: orange;
-}
-
+/* Fill in for progress bar value */
 #seek-slider::-webkit-progress-value {
-    -webkit-appearance: none;
-    -moz-appearance: none;
-    background-color: pink;
+    background-color: orange;
+    border-radius: 5px;
 }
 
 #buffer-bar {
-    display: none;
-/*
-    background-color: yellow;
-    width: 50%;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    width: 90%;
     height: 10px;
-    display: none;
     position: absolute;
-    left: 30px;
-*/
+    left: 20px;
+    bottom: 10px;
+    border-radius: 5px;
+    background: transparent;
+}
+
+#buffer-bar::-webkit-progress-value {
+    background-color: yellow;
 }
 
 #play-pause-btn,
