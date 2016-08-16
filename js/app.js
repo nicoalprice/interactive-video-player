@@ -35,7 +35,6 @@ function initializeVideo() {
     vid.addEventListener("paused", showProgress, false);
     vid.addEventListener("timeupdate", highlightText, false);
 
-
     /* Set default volume level. */
     vid.volume = 0.5;
 
@@ -169,16 +168,16 @@ function highlightText() {
     //Get current video time
     var highlightTime = vid.currentTime;
     //Get transcript cues from HTML document
-    var highlight = document.querySelectorAll('span.cue');
+    var cue = document.querySelectorAll('span.cue');
 
     //Highlight span corresponding to current time
     function toggleHighlight(n) {
         //Add highlighted class
-        highlight[n].classList.add('highlighted');
+        cue[n].classList.add('highlighted');
 
         //Remove highlighted class from previous cue
         if (n > 0 ) {
-            highlight[n-1].classList.remove('highlighted');
+            cue[n-1].classList.remove('highlighted');
         }
     }
 
@@ -246,3 +245,10 @@ function playBack() {
 
 
 // When the user clicks on any sentence in the transcript the video player jumps to the appropriate time in the video.
+
+//function should be bound to click event
+//function goToCue() {
+//    if () {
+//
+//    }
+//}
