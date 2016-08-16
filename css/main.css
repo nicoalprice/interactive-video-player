@@ -24,6 +24,11 @@ video {
     color: white;
 }
 
+/* Hide native controls */
+video::-webkit-media-controls {
+  display:none !important;
+}
+
 /* ----- Progress Bars ----- */
 
 #progress-bar {
@@ -98,4 +103,5 @@ video {
 
 .highlighted {
     background-color: yellow;
+    border-radius: 2px;
 }
