@@ -49,6 +49,8 @@ video::-webkit-media-controls {
     bottom: 20px;
     border-radius: 5px;
     background: transparent;
+    z-index: 1;
+    opacity: .5;
 }
 
 /* Fill in for progress bar value */
@@ -63,8 +65,8 @@ video::-webkit-media-controls {
     width: 90%;
     height: 10px;
     position: absolute;
-    left: 20px;
-    bottom: 10px;
+    left: 40px;
+    bottom: 20px;
     border-radius: 5px;
     background: transparent;
 }
