@@ -16,7 +16,7 @@ video {
 
 #video-controls {
     background: black;
-    opacity: .6;
+    opacity: .8;
     position: relative;
     width: 100%;
     height: 40px;
@@ -26,41 +26,44 @@ video {
 
 /* ----- Progress Bars ----- */
 
-/*
- #play-progress-bars {
-    position: absolute;
-    bottom: 0;
-    left: 30px;
-    width: 50%;
-    color: red;
-}
-
 #progress-bar {
     position: absolute;
-    left: 0;
-    z-index: 2;
     left: 30px;
+    bottom: 0;
+    width: 50%;
+    background: transparent;
 }
-*/
 
 #seek-slider {
-    width: 50%;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    width: 90%;
     height: 10px;
     position: absolute;
     left: 40px;
-    bottom: 10px;
+    bottom: 20px;
     z-index: 1;
-    opacity: .6;
-    background-color: white;
-    color: pink;
+}
+
+#seek-slider[type="range"]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    background-color: orange;
+}
+
+#seek-slider::-webkit-progress-value {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    background-color: pink;
 }
 
 #buffer-bar {
+    display: none;
+/*
     background-color: yellow;
     width: 50%;
     height: 10px;
     display: none;
-/*
     position: absolute;
     left: 30px;
 */

@@ -3,7 +3,6 @@
 var vid = document.getElementById("my-video");
 var videoBox = document.getElementById("video-box");
 var playButton = document.getElementById("play-pause-btn");
-var progressBar = document.getElementById("progress-bar");
 var seekBar = document.getElementById("seek-slider");
 var bufferBar = document.getElementById("buffer-bar");
 var currentTimeText = document.getElementById("current-time");

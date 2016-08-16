@@ -24,14 +24,13 @@
                     <track id="captions" label="English" kind="subtitles" srclang="en" src="video/captions.vtt" mode="hidden">
                 </video>
                 <div id="video-controls">
-                    <div id="play-progress-bars">
-                        <button id="play-pause-btn"><img src="icons/play-icon.png" alt="play"></button>
-                        <div id="progress-bar">
+                    <button id="play-pause-btn"><img src="icons/play-icon.png" alt="play"></button>
+                    <div id="progress-bar">
                             <input type="range" id="buffer-bar" max="100" value="0">
                             <input type="range" id="seek-slider" max="100" value="0">
                     </div>
-                        </div>
-                    <div id="times"><span id="current-time"></span> / <span id="duration-time"></span></div>
+                    <div id="times">
+                        <span id="current-time"></span> / <span id="duration-time"></span></div>
                     <button type="button" id="caption-button">CC</button>
                     <button type="button" id="playback-speed">1.5x</button>
                     <button type="button" id="mute"><img src="icons/volume-off-icon.png"></button>
