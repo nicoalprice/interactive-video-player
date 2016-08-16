@@ -164,41 +164,57 @@ function showControls() {
 }
 
 /* ----- HIGHLIGHT TRANSCRIPT ----- */
-/* As the media playback time changes, sentences in the transcript should highlight.
-Use JavaScript to listen for those changes and apply a highlight to the appropriate sentence.
-You can use the captions.vtt file to see the times at which the words are spoken in the video. */
-
-/* Idea seen in chat */
+/* As the media playback time changes, sentences in the transcript should highlight.*/
 
 // Highlight transcript
 function highlightText() {
     //Get current video time
-    var startHighlight = vid.currentTime;
-    console.log(startHighlight);
-    //Find transcript cues in HTML document
-    var highlight = document.querySelectorAll('data-start');
-    //Highlight span corresponding to current time
-    function addHighlight() {
-        startHighlight.classList.remove('boo');
-        startHighlight.classList.add('boo');
-    }
-        if (highlight > 0 && highlight < 4.13) {
-            addHighlight(0);
-        } else if (highlight > 4.13 && highlight < 7.535) {
-            addHighlight(4.13);
-        } else if (highlight > 7.535 && highlight < 11.27) {
-            addHighlight(7.535);
-        } else if (highlight > 11.27 && highlight < 13.96) {
-            addHighlight(11.27);
-        } else if (highlight > 13.96 && highlight < 17.94) {
-            addHighlight(13.96);
-        } else if (highlight > 17.94 && highlight < 22.37) {
-            addHighlight(17.94);
-        } else if (highlight > 22.37 && highlight < 26.88) {
-            addHighlight(22.37);
-        }
+    var highlightTime = vid.currentTime;
+    //Get transcript cues from HTML document
+    var highlight = document.querySelectorAll('span.cue');
 
-    //Add something here that gets the function going
+    //Highlight span corresponding to current time
+    function toggleHighlight(n) {
+        //Add highlighted class
+        highlight[n].classList.add('highlighted');
+
+        //Remove highlighted class from previous cue
+        if (n > 0 ) {
+            highlight[n-1].classList.remove('highlighted');
+        }
+    }
+
+        if (highlightTime > 0 && highlightTime < 4.13) {
+            toggleHighlight(0);
+        } else if (highlightTime > 4.13 && highlightTime < 7.535) {
+            toggleHighlight(1);
+        } else if (highlightTime > 7.535 && highlightTime < 11.27) {
+            toggleHighlight(2);
+        } else if (highlightTime > 11.27 && highlightTime < 13.96) {
+            toggleHighlight(3);
+        } else if (highlightTime > 13.96 && highlightTime < 17.94) {
+            toggleHighlight(4);
+        } else if (highlightTime > 17.94 && highlightTime < 22.37) {
+            toggleHighlight(5);
+        } else if (highlightTime > 22.37 && highlightTime < 26.88) {
+            toggleHighlight(6);
+        } else if (highlightTime > 26.88 && highlightTime < 32.1) {
+            toggleHighlight(7);
+        } else if (highlightTime > 32.1 && highlightTime < 34.73) {
+            toggleHighlight(8);
+        } else if (highlightTime > 34.73 && highlightTime < 39.43) {
+            toggleHighlight(9);
+        } else if (highlightTime > 39.43 && highlightTime < 42.35) {
+            toggleHighlight(10);
+        } else if (highlightTime > 42.35 && highlightTime < 46.3) {
+            toggleHighlight(11);
+        } else if (highlightTime > 46.3 && highlightTime < 49.27) {
+            toggleHighlight(12);
+        } else if (highlightTime > 49.27 && highlightTime < 53.76) {
+            toggleHighlight(13);
+        } else if (highlightTime > 53.76 && highlightTime < 57.78 ) {
+            toggleHighlight(14);
+        }
 }
 
 /* ----- CLOSED CAPTIONS ----- */
