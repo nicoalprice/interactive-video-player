@@ -1,5 +1,10 @@
 // CSS for Interactive Video Player //
 
+* {
+    box-sizing: border-box;
+    -webkit-appearance: none !important;
+}
+
 .wrapper {
     width: 100%;
 }
@@ -14,15 +19,23 @@ video {
     width: 100%;
 }
 
+/* ----- Controls ----- */
+
+#controls-container {
+    position: relative;
+    bottom: 50px;
+    height: 50px;
+    width: 100%;
+    background: rgba(0,0,0,.5);
+}
+
 #video-controls {
-    background: black;
-    opacity: .8;
     position: relative;
     left: 0;
     right: 0;
     bottom: 0;
     width: 100%;
-    height: 10%;
+    height: 40px;
     margin: auto;
     color: white;
 }
@@ -36,20 +49,21 @@ video::-webkit-media-controls {
 
 #progress-bar {
     position: relative;
-    left: 30px;
-    bottom: 0;
-    width: 50%;
+    left: 0;
+    right: 0;
+    bottom: -10px;
+    margin: auto;
+    width: 100%;
     background: black;
 }
 
 #seek-slider {
     -webkit-appearance: none;
     -moz-appearance: none;
-    width: 90%;
-    height: 10px;
+    width: 100%;
+    height: 5px;
     position: absolute;
-    left: 40px;
-    bottom: 20px;
+    bottom: 10px;
     border-radius: 5px;
     background: transparent;
     z-index: 1;
@@ -65,11 +79,10 @@ video::-webkit-media-controls {
 #buffer-bar {
     -webkit-appearance: none;
     -moz-appearance: none;
-    width: 90%;
-    height: 10px;
+    width: 100%;
+    height: 5px;
     position: absolute;
-    left: 40px;
-    bottom: 20px;
+    bottom: 10px;
     border-radius: 5px;
     background: transparent;
 }
@@ -78,12 +91,10 @@ video::-webkit-media-controls {
     background-color: purple;
 }
 
-/* ----- Controls ----- */
-
 #play-pause-btn,
 #mute,
 #caption-button,
-#volume-bar,
+input#volume-bar,
 #playback-speed,
 #full-screen,
 #times {
@@ -98,11 +109,11 @@ video::-webkit-media-controls {
     float: left;
 }
 
+#full-screen,
 #mute,
 #caption-button,
 #volume-bar,
-#playback-speed,
-#full-screen {
+#playback-speed {
     float: right;
 }
 
