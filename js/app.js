@@ -217,6 +217,7 @@ function highlightText() {
 }
 
 /* ----- Clickable Transcript ----- */
+// Clicking on a phrase in the transcript jumps to that part of the video
 
 function goToCue() {
     //List all cues
