@@ -9,11 +9,14 @@
 }
 
 #video-box {
+/*
     margin: auto;
     padding-bottom: 0;
     margin-bottom: 0;
+*/
     width: 100%;
-    overflow: hidden;
+    height: 100%;
+/*    overflow: hidden;*/
 }
 
 video {
