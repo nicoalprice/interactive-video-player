@@ -1,4 +1,4 @@
-/* ----- VARIABLES ----- */
+* ----- VARIABLES ----- */
 
 var vid = document.getElementById("my-video");
 var videoBox = document.getElementById("video-box");

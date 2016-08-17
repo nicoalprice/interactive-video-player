@@ -18,8 +18,10 @@ video {
     background: black;
     opacity: .8;
     position: relative;
+    left: 0;
+    bottom: 0;
     width: 100%;
-    height: 40px;
+    height: 10%;
     margin: auto;
     color: white;
 }
@@ -75,18 +77,22 @@ video::-webkit-media-controls {
     background-color: purple;
 }
 
+/* ----- Controls ----- */
+
 #play-pause-btn,
 #mute,
 #caption-button,
 #volume-bar,
 #playback-speed,
-#full-screen {
+#full-screen,
+#times {
     background: transparent;
     border: none;
     padding-left: 10px;
     float: left;
+    vertical-align: middle;
 }
-#times,
+
 #mute,
 #caption-button,
 #volume-bar,
@@ -95,6 +101,8 @@ video::-webkit-media-controls {
     float: right;
 }
 
+/* ----- TRANSCRIPT ----- */
+
 .transcript {
     margin: auto;
     width: 90%;
@@ -102,7 +110,12 @@ video::-webkit-media-controls {
     font-size: 1em;
 }
 
+#transcript span:hover {
+    background-color: lightyellow;
+    border-radius: 4px;
+}
+
 .highlighted {
     background-color: yellow;
-    border-radius: 2px;
+    border-radius: 4px;
 }
