@@ -17,6 +17,7 @@ var controls = document.getElementById("video-controls");
 var cues = document.querySelectorAll("span.cue");
 var transcript = document.getElementById("transcript");
 
+
 /* ----- INITIALIZE VIDEO PLAYER -----*/
 
 function initializeVideo() {
@@ -47,6 +48,7 @@ function initializeVideo() {
 /* Initialize player on window load */
 window.onload = initializeVideo;
 
+
 /* ----- PLAY/PAUSE BUTTON ----- */
 // Switch between play and pause.
 function playPause() {
@@ -62,14 +64,12 @@ function playPause() {
 
 /* ----- VOLUME CONTROLS ----- */
 
-// Volume control so viewer can adjust the volume level, not just mute or on.
-
+// Volume control so viewer can adjust the volume level
 function volumeControl() {
     vid.volume = volumeBar.value;
 }
 
-// Add volume button that lets you mute the sound or turn it on.
-
+// Add volume button that lets you mute the sound or turn it on
 function mute() {
     if (vid.muted == false) {
         // Mute the video
@@ -146,7 +146,7 @@ function bufferUpdate() {
 }
 
 /* ----- HIDE/SHOW VIDEO CONTROLS ----- */
-/* Use Javascript or CSS to hide and show the video player button on mouse hover states. Only the progress bar should remain. */
+/* Show the video player button on mouse hover states. Only the progress bar should remain. */
 
 // Still need to make progress bar go away when video is not playing and mouse is not hovering.
 
@@ -178,7 +178,6 @@ function highlightText() {
             }
             //Add highlighted class
             cues[n].classList.add('highlighted');
-
         }
 
         if (highlightTime > 0 && highlightTime < 4.13) {
