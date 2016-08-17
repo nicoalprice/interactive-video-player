@@ -172,14 +172,12 @@ function highlightText() {
 
         //Highlight span corresponding to current time
         function toggleHighlight(n) {
-
+            // Removed highlight from any unclicked text
+            for (var i=0; i < cues.length; i++) {
+                cues[i].classList.remove("highlighted");
+            }
             //Add highlighted class
             cues[n].classList.add('highlighted');
-
-            //Remove highlighted class from previous cue
-            if (n > 0) {
-                cues[n-1].classList.remove('highlighted');
-            }
 
         }
 
