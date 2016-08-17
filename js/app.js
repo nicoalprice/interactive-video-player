@@ -23,7 +23,7 @@ var transcript = document.getElementById("transcript");
 function initializeVideo() {
     /* Set event listeners */
     playButton.addEventListener("click", playPause, false);
-    seekBar.addEventListener("click", vidSeek, false);
+    seekBar.addEventListener("change", vidSeek, false);
     vid.addEventListener("timeupdate", seekTimeUpdate, false);
     vid.addEventListener("timeupdate", bufferUpdate, false);
     captionButton.addEventListener("click", closedCaptions, false);
@@ -105,13 +105,11 @@ function screenSize() {
 /* ----- PROGRESS BAR & TIME DISPLAY ----- */
 
 /* Click anywhere on the playback bar to jump to that part of the video. */
-function vidSeek(event) {
-    //Calculate new time based on user click
-    var seekUpdate = event.offsetX / this.offsetWidth;
+function vidSeek() {
+    //Calculate new time
+    var seek = vid.duration * (seekBar.value / 100);
     //Update video time
-    vid.currentTime = seekUpdate * vid.duration;
-    //Convert to percentage
-    seekBar.value = seekUpdate / 100;
+    vid.currentTime = seek;
 }
 
 function seekTimeUpdate() {
