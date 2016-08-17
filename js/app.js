@@ -154,6 +154,8 @@ function bufferUpdate() {
 
 function hideControls() {
     controls.style.visibility = "hidden";
+    progressBar.style.transform = "translateY(50px)";
+
 }
 
 function showProgress() {
@@ -162,6 +164,8 @@ function showProgress() {
 
 function showControls() {
     controls.style.visibility = "visible";
+    progressBar.style.transform = "translateY(0)";
+
 }
 
 /* ----- HIGHLIGHT TRANSCRIPT ----- */
