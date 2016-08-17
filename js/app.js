@@ -14,7 +14,8 @@ var speed = document.getElementById("playback-speed");
 var volumeBar = document.getElementById("volume-bar");
 var fullScreen = document.getElementById("full-screen");
 var controls = document.getElementById("video-controls");
-
+var cues = document.querySelectorAll("span.cue");
+var transcript = document.getElementById("transcript");
 
 /* ----- INITIALIZE VIDEO PLAYER -----*/
 
@@ -34,6 +35,7 @@ function initializeVideo() {
     vid.addEventListener("playing", showProgress, false);
     vid.addEventListener("paused", showProgress, false);
     vid.addEventListener("timeupdate", highlightText, false);
+    transcript.addEventListener("click", goToCue, false);
 
     /* Set default volume level. */
     vid.volume = 0.5;
@@ -167,19 +169,19 @@ function showControls() {
 function highlightText() {
     //Get current video time
     var highlightTime = vid.currentTime;
-    //Get transcript cues from HTML document
-    var cue = document.querySelectorAll('span.cue');
 
-    //Highlight span corresponding to current time
-    function toggleHighlight(n) {
-        //Add highlighted class
-        cue[n].classList.add('highlighted');
+        //Highlight span corresponding to current time
+        function toggleHighlight(n) {
 
-        //Remove highlighted class from previous cue
-        if (n > 0 ) {
-            cue[n-1].classList.remove('highlighted');
+            //Add highlighted class
+            cues[n].classList.add('highlighted');
+
+            //Remove highlighted class from previous cue
+            if (n > 0) {
+                cues[n-1].classList.remove('highlighted');
+            }
+
         }
-    }
 
         if (highlightTime > 0 && highlightTime < 4.13) {
             toggleHighlight(0);
@@ -214,6 +216,28 @@ function highlightText() {
         }
 }
 
+/* ----- Clickable Transcript ----- */
+
+function goToCue() {
+    //List all cues
+    var cueList = document.getElementsByClassName("cue");
+
+    function getCue(event) {
+        // Target cue that is clicked on
+        var cueTime = event.target.getAttribute('data-start');
+        console.log(cueTime);
+        // Set video time to data-start time
+        vid.currentTime = cueTime;
+        // Play the video
+        vid.play();
+    }
+    //Set times for cueTime for list of cues
+    for(var i=0; i < cues.length; i++) {
+        cues[i].cueTime = getCue(event);
+    }
+}
+
+
 /* ----- CLOSED CAPTIONS ----- */
 
 // Toggle captions on and off.
@@ -227,7 +251,6 @@ function closedCaptions() {
     }
 }
 
-// A creative and thoughtful responsive design.
 
 /* ----- PLAYBACK SPEED CONTROL ----- */
 // Playback speed control or other helpful controls.
@@ -242,13 +265,3 @@ function playBack() {
         speed.innerText = "1.5x"; //replace with icon
     }
 }
-
-
-// When the user clicks on any sentence in the transcript the video player jumps to the appropriate time in the video.
-
-//function should be bound to click event
-//function goToCue() {
-//    if () {
-//
-//    }
-//}
