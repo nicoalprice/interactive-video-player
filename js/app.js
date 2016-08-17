@@ -67,6 +67,12 @@ function playPause() {
 // Volume control so viewer can adjust the volume level
 function volumeControl() {
     vid.volume = volumeBar.value;
+    if (vid.volume == 0) {
+        mute();
+    }
+    else if (vid.volume > 0) {
+        vid.muted = false;
+    }
 }
 
 // Add volume button that lets you mute the sound or turn it on
