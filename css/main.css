@@ -11,6 +11,8 @@
 
 #video-box {
     margin: auto;
+    padding-bottom: 0;
+    margin-bottom: 0;
     width: 100%;
     overflow: hidden;
 }
@@ -23,13 +25,15 @@ video {
 
 #controls-container {
     position: relative;
-    bottom: 50px;
+    bottom: 54px;
     height: 50px;
     width: 100%;
-    background: rgba(0,0,0,.5);
+    background: rgba(0,0,0,.3);
+    margin-bottom: 0;
 }
 
 #video-controls {
+    display: inline-flex;
     position: relative;
     left: 0;
     right: 0;
@@ -38,9 +42,13 @@ video {
     height: 40px;
     margin: auto;
     color: white;
+    background: transparent;
+    vertical-align: baseline;
+    padding-top: 4px;
+    padding-bottom: 4px;
 }
 
-/* Hide native controls */
+// Hide native controls
 video::-webkit-media-controls {
   display:none !important;
 }
@@ -98,15 +106,36 @@ input#volume-bar,
 #playback-speed,
 #full-screen,
 #times {
-    background: black;
     border: none;
-    padding: 10px;
-    vertical-align: middle;
+    vertical-align: baseline;
+    height: 100%;
+    background: transparent;
+}
+
+#full-screen {
+    order: 6;
+}
+#caption-button {
+    order: 5;
+    border: 1px solid white;
+    border-radius: 4px;
+}
+
+#playback-speed {
+    order: 4;
+    border: 1px solid white;
+    border-radius: 4px;
 }
 
 #play-pause-btn,
 #times {
-    float: left;
+    margin-right: auto;
+}
+
+#times {
+    padding: 4px;
+    border: 1px solid white;
+    flex-grow: 2;
 }
 
 #full-screen,
@@ -114,13 +143,14 @@ input#volume-bar,
 #caption-button,
 #volume-bar,
 #playback-speed {
-    float: right;
+    align-self: flex-end;
 }
 
 /* ----- TRANSCRIPT ----- */
 
 .transcript {
     margin: auto;
+    margin-top: 0;
     width: 90%;
     font-family: 'Varela', sans-serif;
     font-size: 1em;
