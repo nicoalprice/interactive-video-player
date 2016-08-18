@@ -21,6 +21,7 @@
 
 video {
     width: 100%;
+    min-width: 234px;
 }
 
 /* ----- Controls ----- */
@@ -172,4 +173,30 @@ input#volume-bar,
 .highlighted {
     background-color: yellow;
     border-radius: 4px;
+}
+
+/* ----- MEDIA QUERIES -----*/
+/* Simplify video controls at small screen sizes.*/
+@media screen and (max-width: 400px) {
+    #playback-speed,
+    #caption-button,
+    #times {
+        display: none;
+    }
+
+    #video-controls {
+
+    }
+}
+
+@media screen and (min-width: 1200px) {
+    #video-box {
+        width: 80%;
+        margin: auto;
+        justify-content: center;
+    }
+
+    #transcript {
+        width: 80%;
+    }
 }
