@@ -152,9 +152,8 @@ input#volume-bar,
 
 /* ----- TRANSCRIPT ----- */
 
-.transcript {
+#transcript {
     margin: auto;
-    margin-top: -50px;
     width: 90%;
     font-family: 'Varela', sans-serif;
     font-size: 1em;
