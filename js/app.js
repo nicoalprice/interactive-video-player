@@ -84,7 +84,6 @@ function mute() {
         muteButton.innerHTML = "<img src='icons/volume-on-icon.png'>";
         // Update volume bar
         volumeBar.value = 0;
-        // Need to figure out why slider doesn't go all the way down to zero.
 
     } else {
         // Unmute the video
@@ -96,17 +95,19 @@ function mute() {
   }
 }
 
+
 /* ----- FULLSCREEN BUTTON ----- */
 
 function screenSize() {
     if (vid.requestFullscreen) {
-    vid.requestFullscreen();
+        vid.requestFullscreen();
     } else if (vid.mozRequestFullScreen) {
-    vid.mozRequestFullScreen(); // Firefox
+        vid.mozRequestFullScreen(); // Firefox
     } else if (vid.webkitRequestFullscreen) {
-    vid.webkitRequestFullscreen(); // Chrome and Safari
+        vid.webkitRequestFullscreen(); // Chrome and Safari
     }
 }
+
 
 /* ----- PROGRESS BAR & TIME DISPLAY ----- */
 
@@ -153,10 +154,9 @@ function bufferUpdate() {
     bufferBar.value = bufferValue;
 }
 
+
 /* ----- HIDE/SHOW VIDEO CONTROLS ----- */
 /* Show the video player button on mouse hover states. Only the progress bar should remain. */
-
-// Still need to make progress bar go away when video is not playing and mouse is not hovering.
 
 function hideControls() {
     controls.style.visibility = "hidden";
@@ -173,6 +173,7 @@ function showControls() {
     progressBar.style.transform = "translateY(0)";
 
 }
+
 
 /* ----- HIGHLIGHT TRANSCRIPT ----- */
 /* As the media playback time changes, sentences in the transcript should highlight.*/
@@ -235,7 +236,6 @@ function goToCue() {
     function getCue(event) {
         // Target cue that is clicked on
         var cueTime = event.target.getAttribute('data-start');
-        console.log(cueTime);
         // Set video time to data-start time
         vid.currentTime = cueTime;
         // Play the video
@@ -249,10 +249,8 @@ function goToCue() {
 
 
 /* ----- CLOSED CAPTIONS ----- */
-
 // Toggle captions on and off.
-
-function closedCaptions() {
+    function closedCaptions() {
     if (vid.textTracks[0].mode == "hidden") {
         vid.textTracks[0].mode = "showing";
     }
@@ -261,10 +259,8 @@ function closedCaptions() {
     }
 }
 
-
 /* ----- PLAYBACK SPEED CONTROL ----- */
 // Playback speed control or other helpful controls.
-/* Need to add icon for this */
 function playBack() {
     if (vid.playbackRate == 1.0) {
         vid.playbackRate = 1.5;
