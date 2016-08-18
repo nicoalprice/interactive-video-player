@@ -7,13 +7,16 @@
 }
 
 .wrapper {
-    width: 100%;
+/*    width: 100%;*/
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 }
 
 #video-box {
-    margin: 0 auto;
+/*    margin: 0 auto;*/
     width: 100%;
-    overflow: hidden;
+/*    overflow: hidden;*/
 }
 
 video {
@@ -153,7 +156,9 @@ input#volume-bar,
 /* ----- TRANSCRIPT ----- */
 
 #transcript {
+    position: relative;
     margin: auto;
+    margin-top: -40px;
     width: 90%;
     font-family: 'Varela', sans-serif;
     font-size: 1em;

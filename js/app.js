@@ -28,6 +28,7 @@ function initializeVideo() {
     vid.addEventListener("timeupdate", bufferUpdate, false);
     captionButton.addEventListener("click", closedCaptions, false);
     volumeBar.addEventListener("change", volumeControl, false);
+    volumeBar.addEventListener("mouseup", volumeControl, false);
     muteButton.addEventListener("click", mute, false);
     speed.addEventListener("click", playBack, false);
     fullScreen.addEventListener("click", screenSize, false);
