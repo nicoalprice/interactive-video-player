@@ -8,16 +8,14 @@
 }
 
 .wrapper {
-/*    width: 100%;*/
     display: flex;
     flex-direction: column;
     justify-content: center;
 }
 
 #video-box {
-/*    margin: 0 auto;*/
     width: 100%;
-/*    overflow: hidden;*/
+    z-index: 2;
 }
 
 video {
@@ -160,7 +158,8 @@ input#volume-bar,
 #transcript {
     position: relative;
     margin: auto;
-    margin-top: -40px;
+/*    margin-top: -50px;*/
+    margin-top: -3em;
     width: 90%;
     font-family: 'Varela', sans-serif;
     font-size: 1em;
@@ -180,7 +179,7 @@ input#volume-bar,
 
 /* ----- MEDIA QUERIES -----*/
 /* Simplify video controls at small screen sizes.*/
-@media screen and (max-width: 400px) {
+@media screen and (max-width: 440px) {
     #playback-speed,
     #caption-button,
     #times {
@@ -189,7 +188,6 @@ input#volume-bar,
 }
 
 @media screen and (min-width: 1000px) {
-
     #content-box {
         box-shadow: 20px 10px 30px #625e5e;
         width: 80%;
@@ -202,5 +200,6 @@ input#volume-bar,
 
     .wrapper {
         background-color: #827c7c;
+        background-image: url(../img/mooning.png);
     }
 }
