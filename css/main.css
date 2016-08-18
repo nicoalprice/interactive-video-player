@@ -5,7 +5,15 @@
 	margin: 0;
 	padding: 0;
 	border: none;
+	outline: none;
 }
+
+/* Remove focus outlines */
+*:focus {
+	outline: none;
+}
+
+/* ----- Containers ----- */
 
 .wrapper {
 	display: flex;
@@ -102,9 +110,82 @@ input#volume-bar,
 	margin-top: 5px;
 }
 
+/* ---- Volume Bar ----- */
 #volume-bar {
 	margin-right: 6px;
 }
+
+/* Hide volume slider defaults */
+ input[type=range] {
+  -webkit-appearance: none;  /*Hides the slider so that custom slider can be made*/
+  width: 20%;  /*Specific width is required for Firefox.*/
+  background: transparent; /* Otherwise white in Chrome */
+}
+
+input[type=range]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+}
+
+input[type=range]::-webkit-slider-thumb {
+	-webkit-appearance: none;
+	-moz-appearance: none;
+	width: 15px;
+	background-color: white;
+	height: 15px;
+	border-radius: 30px;
+	margin-top: -6px;
+}
+
+input[type=range]::-moz-range-thumb {
+	-webkit-appearance: none;
+	-moz-appearance: none;
+	width: 15px;
+	background-color: white;
+	height: 15px;
+	border-radius: 30px;
+	margin-top: -6px;
+
+}
+
+input[type=range]::-ms-thumb {
+	-webkit-appearance: none;
+	-moz-appearance: none;
+	background-color: white;
+	width: 15px;
+	height: 15px;
+	border-radius: 30px;
+	margin-top: -1px;
+}
+
+/* ----- Volume Track ----- */
+
+input[type=range]::-webkit-slider-runnable-track {
+	height: 2px;
+	cursor: pointer;
+	background: white;
+	border-radius: 2px;
+}
+
+input[type=range]::-moz-range-track {
+	height: 2px;
+	cursor: pointer;
+	background: white;
+	border-radius: 2px;
+}
+
+input[type=range]::-ms-track {
+	height: 2px;
+	cursor: pointer;
+	background: white;
+	border-radius: 2px;
+}
+
+input[type=range]::-ms-fill-lower {
+  background: white;
+}
+
+input[type=range]::-ms-fill-upper
+
 
 #full-screen,
 #mute,
@@ -113,6 +194,11 @@ input#volume-bar,
 #playback-speed {
 	align-self: flex-end;
 }
+
+input[type="button"]:focus {
+  outline: none; /* Removes the blue border.*/
+}
+
 
 /* ----- Progress Bars ----- */
 
