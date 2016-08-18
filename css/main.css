@@ -1,57 +1,64 @@
 // CSS for Interactive Video Player //
 
 * {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
-    border: 0;
+	box-sizing: border-box;
+	margin: 0;
+	padding: 0;
+	border: none;
 }
 
 .wrapper {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
 }
 
 #video-box {
-    width: 100%;
-    z-index: 2;
+	width: 100%;
+	z-index: 2;
 }
 
 video {
-    width: 100%;
-    min-width: 234px;
+	width: 100%;
+	min-width: 234px;
 }
 
 /* ----- Controls ----- */
 
+/* Hide native video controls */
+video::-webkit-media-controls,
+video::-webkit-media-controls-enclosure {
+	display:none !important;
+}
+
+progress[value] {
+	-webkit-appearance: none;
+	-moz-appearance: none;
+}
+
 #controls-container {
-    position: relative;
-    bottom: 54px;
-    height: 50px;
-    width: 100%;
-    margin-bottom: 0;
+	position: relative;
+	bottom: 54px;
+	height: 50px;
+	width: 100%;
+	margin-bottom: 0;
 }
 
 #video-controls {
-    display: inline-flex;
-    position: relative;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    width: 100%;
-    height: 40px;
-    margin: auto;
-    color: white;
-    background: transparent;
-    vertical-align: baseline;
-    padding-top: 4px;
-    padding-bottom: 4px;
-}
-
-/* Hide native controls */
-video::-webkit-media-controls {
-  display:none !important;
+	display: inline-flex;
+	position: relative;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	width: 100%;
+	height: 40px;
+	margin: auto;
+	color: white;
+	background: transparent;
+	vertical-align: baseline;
+	padding-top: 4px;
+	padding-bottom: 4px;
+	z-index: 2147483647; /* trying to override FF defaults */
 }
 
 #play-pause-btn,
@@ -61,42 +68,42 @@ input#volume-bar,
 #playback-speed,
 #full-screen,
 #times {
-    border: none;
-    vertical-align: baseline;
-    height: 100%;
-    background: transparent;
+	border: none;
+	vertical-align: baseline;
+	height: 100%;
+	background: transparent;
 }
 
 #full-screen {
-    order: 6;
+	order: 6;
 }
 #caption-button {
-    order: 5;
-    border: 1px solid white;
-    border-radius: 4px;
-    margin-right: 6px;
+	order: 5;
+	border: 1px solid white;
+	border-radius: 4px;
+	margin-right: 6px;
 }
 
 #playback-speed {
-    order: 4;
-    border: 1px solid white;
-    border-radius: 4px;
-    margin-right: 6px;
+	order: 4;
+	border: 1px solid white;
+	border-radius: 4px;
+	margin-right: 6px;
 }
 
 #play-pause-btn,
 #times {
-    margin-right: auto;
+	margin-right: auto;
 }
 
 #times {
-    padding: 4px;
-    flex-grow: 2;
-    margin-top: 5px;
+	padding: 4px;
+	flex-grow: 2;
+	margin-top: 5px;
 }
 
 #volume-bar {
-    margin-right: 6px;
+	margin-right: 6px;
 }
 
 #full-screen,
@@ -104,102 +111,111 @@ input#volume-bar,
 #caption-button,
 #volume-bar,
 #playback-speed {
-    align-self: flex-end;
+	align-self: flex-end;
 }
 
 /* ----- Progress Bars ----- */
 
 #progress-bar {
-    position: relative;
-    left: 0;
-    right: 0;
-    bottom: -10px;
-    margin: auto;
-    width: 100%;
-    background: black;
+	position: relative;
+	left: 0;
+	right: 0;
+	bottom: -10px;
+	margin: auto;
+	width: 100%;
 }
 
-#seek-slider {
-    -webkit-appearance: none;
-    -moz-appearance: none;
-    width: 100%;
-    height: 5px;
-    position: absolute;
-    bottom: 10px;
-    border-radius: 5px;
-    background: transparent;
-    z-index: 1;
-    opacity: .6;
+#seek-slider,
+#buffer-bar {
+	-webkit-appearance: none;
+	-moz-appearance: none;
+	position: absolute;
+	width: 100%;
+	height: 5px;
+	bottom: 10px;
+	border-radius: 5px;
+}
+
+#seek-slider::-webkit-progress-bar,
+#seek-slider::-webkit-progress-value,
+#buffer-bar::-webkit-progress-bar,
+#buffer-bar::-webkit-progress-value {
+	-webkit-appearance: none;
+	-moz-appearance: none;
+	position: absolute;
+	height: 5px;
+	width: 100%;
+}
+
+#seek-slider::-webkit-progress-bar {
+	background: transparent;
 }
 
 /* Fill in for progress bar value */
 #seek-slider::-webkit-progress-value {
-    background-color: orange;
-    border-radius: 5px;
+	background-color: orange;
+	opacity: 1;
+	border-radius: 5px;
+	z-index: 100;
 }
 
-#buffer-bar {
-    -webkit-appearance: none;
-    -moz-appearance: none;
-    width: 100%;
-    height: 5px;
-    position: absolute;
-    bottom: 10px;
-    border-radius: 5px;
-    background: transparent;
+#buffer-bar::-webkit-progress-bar {
+	background-color: grey;
+	opacity: .2;
 }
 
 #buffer-bar::-webkit-progress-value {
-    background-color: purple;
+	border-radius: 5px;
+	background-color: black;
+	opacity: .9;
 }
 
 /* ----- TRANSCRIPT ----- */
 
 #transcript {
-    position: relative;
-    margin: auto;
-/*    margin-top: -50px;*/
-    margin-top: -3em;
-    width: 90%;
-    font-family: 'Varela', sans-serif;
-    font-size: 1em;
-    background-color: white;
-    padding: 10px;
+	position: relative;
+	margin: auto;
+	margin-top: -3em;
+	width: 90%;
+	font-family: 'Varela', sans-serif;
+	font-size: 1em;
+	background-color: white;
+	padding: 10px;
 }
 
 #transcript span:hover {
-    background-color: lightyellow;
-    border-radius: 4px;
+	background-color: lightyellow;
+	border-radius: 4px;
 }
 
 .highlighted {
-    background-color: yellow;
-    border-radius: 4px;
+	background-color: yellow;
+	border-radius: 4px;
 }
 
 /* ----- MEDIA QUERIES -----*/
 /* Simplify video controls at small screen sizes.*/
 @media screen and (max-width: 440px) {
-    #playback-speed,
-    #caption-button,
-    #times {
-        display: none;
-    }
+	#playback-speed,
+	#caption-button,
+	#times {
+		display: none;
+	}
 }
 
 @media screen and (min-width: 1000px) {
-    #content-box {
-        box-shadow: 20px 10px 30px #625e5e;
-        width: 80%;
-        border-radius: 5px;
-        margin: 10px auto;
-        justify-content: center;
-        background-color: white;
-        padding: 10px;
-    }
+	#content-box {
+		box-shadow: 20px 10px 30px #625e5e;
+		width: 80%;
+		border-radius: 5px;
+		margin: 10px auto;
+		justify-content: center;
+		background-color: white;
+		padding: 10px;
+	}
 
-    .wrapper {
-        background-color: #827c7c;
-        background-image: url(../img/mooning.png);
-    }
+	.wrapper {
+		background-color: #827c7c;
+		background-image: url(../img/mooning.png);
+	}
 }
