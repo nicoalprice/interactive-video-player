@@ -160,9 +160,10 @@ function bufferUpdate() {
 /* Show the video player button on mouse hover states. Only the progress bar should remain. */
 
 function hideControls() {
+    if (vid.paused == false) {
     controls.style.visibility = "hidden";
     progressBar.style.transform = "translateY(50px)";
-
+    }
 }
 
 function showProgress() {

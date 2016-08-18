@@ -4,6 +4,7 @@
     box-sizing: border-box;
     margin: 0;
     padding: 0;
+    border: 0;
 }
 
 .wrapper {
@@ -163,6 +164,8 @@ input#volume-bar,
     width: 90%;
     font-family: 'Varela', sans-serif;
     font-size: 1em;
+    background-color: white;
+    padding: 10px;
 }
 
 #transcript span:hover {
@@ -183,20 +186,21 @@ input#volume-bar,
     #times {
         display: none;
     }
-
-    #video-controls {
-
-    }
 }
 
-@media screen and (min-width: 1200px) {
-    #video-box {
+@media screen and (min-width: 1000px) {
+
+    #content-box {
+        box-shadow: 20px 10px 30px #625e5e;
         width: 80%;
-        margin: auto;
+        border-radius: 5px;
+        margin: 10px auto;
         justify-content: center;
+        background-color: white;
+        padding: 10px;
     }
 
-    #transcript {
-        width: 80%;
+    .wrapper {
+        background-color: #827c7c;
     }
 }
