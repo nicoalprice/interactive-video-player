@@ -104,7 +104,7 @@ function screenSize() {
 	if (vid.requestFullscreen) {
 		vid.requestFullscreen();
 		controls.style.visibility = "hidden";
-	} else if (vid.mozRequestFullscreen) {
+	} else if (vid.mozRequestFullScreen) {
 		vid.mozRequestFullScreen(); // Firefox
 		controls.style.visibility = "hidden";
 	} else if (vid.webkitRequestFullScreen) {
