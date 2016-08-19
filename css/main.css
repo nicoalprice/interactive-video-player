@@ -222,6 +222,7 @@ input[type="button"]:focus {
 	height: 5px;
 	width: 100%;
 	background: transparent;
+	border: 0;
 }
 
 /* Play Progress Bar Static -- Firefox */
