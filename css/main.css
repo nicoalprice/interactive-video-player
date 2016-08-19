@@ -42,16 +42,6 @@ video::-webkit-media-controls-enclosure {
 	display:none !important;
 }
 
-controls {
-	z-index: -1;
-	display: none;
-}
-
-progress[value] {
-	-webkit-appearance: none;
-	-moz-appearance: none;
-}
-
 #controls-container {
 	position: relative;
 	bottom: 54px;
@@ -74,7 +64,6 @@ progress[value] {
 	vertical-align: baseline;
 	padding-top: 4px;
 	padding-bottom: 4px;
-	z-index: 2147483647; /* trying to override FF defaults */
 }
 
 #play-pause-btn,
@@ -225,11 +214,6 @@ input[type="button"]:focus {
 
 /* -- PLAY PROGRESS BAR -- */
 
-#seek-slider::-webkit-progress-inner-element {
-border: none;
-outline: none;
-}
-
 /* Progress Bar Static */
 #seek-slider::-webkit-progress-bar {
 	-webkit-appearance: none;
@@ -242,13 +226,13 @@ outline: none;
 
 /* Play Progress Bar Static -- Firefox */
 #seek-slider {
-	-webkit-appearance: none;
-	-moz-appearance: none;
-	-ms-appearance: none;
+	position: absolute;
+	height: 5px;
+	width: 100%;
 	background: transparent;
 }
 
-/* Play Progress Bar Value */
+/* Play Progress Bar Value -- Chrome */
 #seek-slider::-webkit-progress-value {
 	-webkit-appearance: none;
 	-moz-appearance: none;
@@ -260,6 +244,7 @@ outline: none;
 	border-radius: 5px;
 	z-index: 100;
 }
+
 /* Progress Bar Value -- Firefox */
 #seek-slider::-moz-progress-bar {
 	-webkit-appearance: none;
@@ -285,6 +270,7 @@ outline: none;
 	background-color: orange;
 	z-index: 100;
 }
+
 /* -- BUFFER BAR -- */
 
 /* Buffer Bar Static */

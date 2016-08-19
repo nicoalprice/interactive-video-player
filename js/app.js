@@ -110,7 +110,7 @@ function screenSize() {
 //		controls.style.visibility = "hidden";
 	} else if (vid.webkitRequestFullScreen) {
 		vid.webkitRequestFullscreen(); // Chrome and Safari
-//		controls.style.visibility = "hidden";
+		controls.style.visibility = "hidden";
 	}
 }
 
