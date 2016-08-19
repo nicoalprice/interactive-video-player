@@ -101,15 +101,16 @@ function mute() {
 /* ----- FULLSCREEN BUTTON ----- */
 
 function screenSize() {
+	vid.removeAttribute("controls");
 	if (vid.requestFullscreen) {
-		vid.requestFullscreen();
-		controls.style.visibility = "hidden";
+		videoBox.requestFullscreen();
+//		controls.style.visibility = "hidden";
 	} else if (vid.mozRequestFullScreen) {
 		vid.mozRequestFullScreen(); // Firefox
-		controls.style.visibility = "hidden";
+//		controls.style.visibility = "hidden";
 	} else if (vid.webkitRequestFullScreen) {
 		vid.webkitRequestFullscreen(); // Chrome and Safari
-		controls.style.visibility = "hidden";
+//		controls.style.visibility = "hidden";
 	}
 }
 
@@ -259,12 +260,12 @@ function goToCue(event) {
 
 /* ----- CLOSED CAPTIONS ----- */
 // Toggle captions on and off.
-	function closedCaptions() {
-	if (vid.textTracks[0].mode == "hidden") {
-		vid.textTracks[0].mode = "showing";
+function closedCaptions() {
+	if (vid.textTracks[0].mode == "showing") {
+		vid.textTracks[0].mode = "hidden";
 	}
 	else {
-		vid.textTracks[0].mode = "hidden";
+		vid.textTracks[0].mode = "showing";
 	}
 }
 
