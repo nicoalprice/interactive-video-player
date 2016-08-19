@@ -230,6 +230,7 @@ input[type="button"]:focus {
 	height: 5px;
 	width: 100%;
 	background: transparent;
+	border: 0;
 }
 
 /* Play Progress Bar Value -- Chrome */
@@ -277,7 +278,6 @@ input[type="button"]:focus {
 #buffer-bar {
 	background-color: dimgrey;
 	opacity: .2;
-	border: none;
 }
 
 /* Buffer Bar Value */
@@ -322,6 +322,7 @@ input[type="button"]:focus {
 	}
 }
 
+/* Larger screen styles */
 @media screen and (min-width: 800px) {
 	#content-box {
 		box-shadow: 20px 10px 30px #625e5e;
