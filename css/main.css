@@ -1,11 +1,11 @@
-// CSS for Interactive Video Player //
+/* CSS for Interactive Video Player */
 
 * {
 	box-sizing: border-box;
 	margin: 0;
 	padding: 0;
 	border: none;
-	outline: none !important;
+	outline: none;
 }
 
 /* Remove focus outlines */

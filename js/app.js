@@ -5,7 +5,6 @@ var videoBox = document.getElementById("video-box");
 var playButton = document.getElementById("play-pause-btn");
 var progressBar = document.getElementById("progress-bar");
 var seekBar = document.getElementById("seek-slider");
-var bufferBar = document.getElementById("buffer-bar");
 var bufferAmount = document.getElementById("buffered-amount");
 var currentTimeText = document.getElementById("current-time");
 var durationTimeText = document.getElementById("duration-time");
@@ -54,7 +53,7 @@ window.onload = initializeVideo;
 /* ----- PLAY/PAUSE BUTTON ----- */
 // Switch between play and pause.
 function playPause() {
-	if (vid.paused == true) {
+	if (vid.paused === true) {
 		vid.play();
 		playButton.innerHTML = "<img src='icons/pause-icon.png' alt='pause'>";
 	}
@@ -69,7 +68,7 @@ function playPause() {
 // Volume control so viewer can adjust the volume level
 function volumeControl() {
 	vid.volume = volumeBar.value;
-	if (vid.volume == 0) {
+	if (vid.volume === 0) {
 		mute();
 	}
 	else if (vid.volume > 0) {
@@ -79,11 +78,11 @@ function volumeControl() {
 
 // Add volume button that lets you mute the sound or turn it on
 function mute() {
-	if (vid.muted == false) {
+	if (vid.muted === false) {
 		// Mute the video
 		vid.muted = true;
 		// Update the button text
-		muteButton.innerHTML = "<img src='icons/volume-on-icon.png'>";
+		muteButton.innerHTML = "<img src='icons/volume-on-icon.png' alt='volume-on-icon'>";
 		// Update volume bar
 		volumeBar.value = 0;
 
@@ -91,7 +90,7 @@ function mute() {
 		// Unmute the video
 		vid.muted = false;
 		// Update the button text
-		muteButton.innerHTML = "<img src='icons/volume-off-icon.png'>";
+		muteButton.innerHTML = "<img src='icons/volume-off-icon.png' alt='volume-off-icon'>";
 		//Set video bar back to previous value
 		volumeBar.value = vid.volume;
   }
@@ -167,7 +166,7 @@ function bufferUpdate() {
 /* Show the video player button on mouse hover states. Only the progress bar should remain. */
 
 function hideControls() {
-	if (vid.paused == false) {
+	if (vid.paused === false) {
 	controls.style.visibility = "hidden";
 	progressBar.style.transform = "translateY(50px)";
 	}
@@ -239,8 +238,6 @@ function highlightText() {
 // Clicking on a phrase in the transcript jumps to that part of the video
 
 function goToCue(event) {
-	//List all cues
-	var cueList = document.getElementsByClassName("cue");
 
 	function getCue() {
 		// Target cue that is clicked on
