@@ -279,10 +279,9 @@ outline: none;
 
 /* Buffer Bar Static */
 #buffer-bar {
-	background-color: pink;
-/*	opacity: .2;*/
+	background-color: dimgrey;
+	opacity: .2;
 	border: none;
-	display: none;
 }
 
 /* Buffer Bar Value */
@@ -290,9 +289,9 @@ outline: none;
 	position: absolute;
 	width: 0;
 	border-radius: 5px;
-	background-color: red;
-	z-index: 5;
-/*	opacity: .5;*/
+	background-color: black;
+	z-index: 0;
+	opacity: .3;
 }
 
 /* ----- TRANSCRIPT ----- */
