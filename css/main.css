@@ -221,28 +221,95 @@ input[type="button"]:focus {
 	height: 5px;
 	width: 100%;
 }
+#seek-slider::-webkit-progress-inner-element {
+border: none;
+outline: none;
+}
 
-#seek-slider::-webkit-progress-bar {
+
+/* Play Progress Bar Static */
+/* Firefox */
+#seek-slider {
+	-webkit-appearance: none;
+	-moz-appearance: none;
+	-ms-appearance: none;
 	background: transparent;
 }
 
-/* Fill in for progress bar value */
+#seek-slider::-webkit-progress-bar {
+	-webkit-appearance: none;
+	-moz-appearance: none;
+	background: transparent;
+}
+
+/* Play Progress Bar Value */
 #seek-slider::-webkit-progress-value {
+	-webkit-appearance: none;
+	-moz-appearance: none;
 	background-color: orange;
 	opacity: 1;
 	border-radius: 5px;
 	z-index: 100;
 }
 
+#seek-slider::-moz-progress-bar {
+	-webkit-appearance: none;
+	-moz-appearance: none;
+	background-color: orange;
+}
+
+#seek-slider::-ms-fill {
+	background-color: orange;
+}
+/* Buffer Bar Static */
+
+/* Firefox? */
+/* Buffer Bar Static */
+#buffer-bar {
+	-webkit-appearance: none;
+	-moz-appearance: none;
+	background-color: grey;
+	opacity: .2;
+	border: none;
+}
+
+/* Buffer Bar Static */
 #buffer-bar::-webkit-progress-bar {
+	-webkit-appearance: none;
+	-moz-appearance: none;
 	background-color: grey;
 	opacity: .2;
 }
+/* Buffer Bar Value */
+progress#buffer-bar {
+	border-radius: 5px;
+	background-color: black;
+	opacity: .5;
+}
 
+/* Buffer Bar Value */
 #buffer-bar::-webkit-progress-value {
 	border-radius: 5px;
 	background-color: black;
-	opacity: .9;
+	opacity: .5;
+}
+
+/* Buffer Bar Value -- Firefox */
+#buffer-bar::-moz-progress-bar {
+	border-radius: 5px;
+	background-color: black;
+	opacity: .5;
+}
+/* Buffer Bar Value -- Microsoft Edge */
+progress#buffer-bar::-ms-fill {
+	border-radius: 5px;
+	background-color: black;
+	opacity: .5;
+}
+
+#buffer-bar::-webkit-progress-inner-element {
+	border: none;
+	outline: none;
 }
 
 /* ----- TRANSCRIPT ----- */
