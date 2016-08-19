@@ -104,12 +104,11 @@ function screenSize() {
 	vid.removeAttribute("controls");
 	if (vid.requestFullscreen) {
 		videoBox.requestFullscreen();
-//		controls.style.visibility = "hidden";
 	} else if (vid.mozRequestFullScreen) {
 		vid.mozRequestFullScreen(); // Firefox
-//		controls.style.visibility = "hidden";
 	} else if (vid.webkitRequestFullScreen) {
 		vid.webkitRequestFullscreen(); // Chrome and Safari
+		// Hide video controls in Chrome to avoid poor placement
 		controls.style.visibility = "hidden";
 	}
 }
