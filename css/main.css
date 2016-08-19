@@ -77,11 +77,13 @@ input#volume-bar,
 	vertical-align: baseline;
 	height: 100%;
 	background: transparent;
+	padding: 6px;
 }
 
 #full-screen {
 	order: 6;
 }
+
 #caption-button {
 	order: 5;
 	border: 2px solid white;
