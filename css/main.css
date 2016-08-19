@@ -191,6 +191,7 @@ input[type="button"]:focus {
 
 /* ----- Progress Bars ----- */
 
+/* Container for Progress & Buffer Bars */
 #progress-bar {
 	position: relative;
 	left: 0;
@@ -201,7 +202,8 @@ input[type="button"]:focus {
 }
 
 #seek-slider,
-#buffer-bar {
+#buffer-bar,
+#buffered-amount {
 	-webkit-appearance: none;
 	-moz-appearance: none;
 	position: absolute;
@@ -211,19 +213,21 @@ input[type="button"]:focus {
 	border-radius: 5px;
 }
 
-#seek-slider::-webkit-progress-bar,
-#seek-slider::-webkit-progress-value,
-#buffer-bar::-webkit-progress-bar,
-#buffer-bar::-webkit-progress-value {
+/* -- PLAY PROGRESS BAR -- */
+
+#seek-slider::-webkit-progress-inner-element {
+border: none;
+outline: none;
+}
+
+/* Progress Bar Static */
+#seek-slider::-webkit-progress-bar {
 	-webkit-appearance: none;
 	-moz-appearance: none;
 	position: absolute;
 	height: 5px;
 	width: 100%;
-}
-#seek-slider::-webkit-progress-inner-element {
-border: none;
-outline: none;
+	background: transparent;
 }
 
 /* Play Progress Bar Static -- Firefox */
@@ -234,17 +238,13 @@ outline: none;
 	background: transparent;
 }
 
-/* Progress Bar Static */
-#seek-slider::-webkit-progress-bar {
-	-webkit-appearance: none;
-	-moz-appearance: none;
-	background: transparent;
-}
-
 /* Play Progress Bar Value */
 #seek-slider::-webkit-progress-value {
 	-webkit-appearance: none;
 	-moz-appearance: none;
+	position: absolute;
+	height: 5px;
+	width: 100%;
 	background-color: orange;
 	opacity: 1;
 	border-radius: 5px;
@@ -254,61 +254,45 @@ outline: none;
 #seek-slider::-moz-progress-bar {
 	-webkit-appearance: none;
 	-moz-appearance: none;
+	position: absolute;
+	height: 5px;
+	width: 100%;
 	background-color: orange;
+	opacity: 1;
+	border-radius: 5px;
+	z-index: 100;
 }
 
 /* Progress Bar Value -- Microsoft Edge */
 #seek-slider::-ms-fill {
-	background-color: orange;
-}
-/* ----- Buffer Bar ----- */
-
-/* Buffer Bar Static -- Firefox */
-#buffer-bar {
 	-webkit-appearance: none;
 	-moz-appearance: none;
-	background-color: grey;
-	opacity: .2;
-	border: none;
+	position: absolute;
+	height: 5px;
+	width: 100%;
+	opacity: 1;
+	border-radius: 5px;
+	background-color: orange;
+	z-index: 100;
 }
+/* -- BUFFER BAR -- */
 
 /* Buffer Bar Static */
-#buffer-bar::-webkit-progress-bar {
-	-webkit-appearance: none;
-	-moz-appearance: none;
-	background-color: grey;
-	opacity: .2;
-}
-/* Buffer Bar Value */
-progress#buffer-bar {
-	border-radius: 5px;
-	background-color: black;
-	opacity: .5;
-}
-
-/* Buffer Bar Value */
-#buffer-bar::-webkit-progress-value {
-	border-radius: 5px;
-	background-color: black;
-	opacity: .5;
-}
-
-/* Buffer Bar Value -- Firefox */
-#buffer-bar::-moz-progress-bar {
-	border-radius: 5px;
-	background-color: black;
-	opacity: .5;
-}
-/* Buffer Bar Value -- Microsoft Edge */
-progress#buffer-bar::-ms-fill {
-	border-radius: 5px;
-	background-color: black;
-	opacity: .5;
-}
-
-#buffer-bar::-webkit-progress-inner-element {
+#buffer-bar {
+	background-color: pink;
+/*	opacity: .2;*/
 	border: none;
-	outline: none;
+	display: none;
+}
+
+/* Buffer Bar Value */
+#buffered-amount {
+	position: absolute;
+	width: 0;
+	border-radius: 5px;
+	background-color: red;
+	z-index: 5;
+/*	opacity: .5;*/
 }
 
 /* ----- TRANSCRIPT ----- */

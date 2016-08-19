@@ -6,6 +6,7 @@ var playButton = document.getElementById("play-pause-btn");
 var progressBar = document.getElementById("progress-bar");
 var seekBar = document.getElementById("seek-slider");
 var bufferBar = document.getElementById("buffer-bar");
+var bufferAmount = document.getElementById("buffered-amount");
 var currentTimeText = document.getElementById("current-time");
 var durationTimeText = document.getElementById("duration-time");
 var muteButton = document.getElementById("mute");
@@ -152,10 +153,13 @@ function seekTimeUpdate() {
 /* ---- BUFFER PROGRESS BAR ----- */
 
 function bufferUpdate() {
+	var bufferedEnd = vid.buffered.end(vid.buffered.length - 1);
 	// Calculate the buffered bar progress value by percent
-	var bufferValue = (100 / vid.duration) * vid.buffered.end(0);
-	// Update the buffered bar value
-	bufferBar.value = bufferValue;
+	var bufferValue = ((bufferedEnd / vid.duration)*100) + "%";
+
+	if (vid.duration > 0) {
+	  bufferAmount.style.width = bufferValue;
+	}
 }
 
 
