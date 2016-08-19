@@ -59,11 +59,10 @@ video::-webkit-media-controls-enclosure {
 	width: 100%;
 	height: 40px;
 	margin: auto;
+	margin-top: 4px;
 	color: white;
 	background: transparent;
 	vertical-align: baseline;
-	padding-top: 4px;
-	padding-bottom: 4px;
 }
 
 #play-pause-btn,
@@ -78,6 +77,8 @@ input#volume-bar,
 	height: 100%;
 	background: transparent;
 	padding: 6px;
+	margin-top: 6px;
+	font-size: .85em;
 }
 
 #full-screen {
@@ -103,15 +104,19 @@ input#volume-bar,
 	margin-right: auto;
 }
 
+#play-pause-btn img {
+	height: 24px;
+}
+
 #times {
-	padding: 4px;
 	flex-grow: 2;
-	margin-top: 5px;
+	margin-top: 11px;
 }
 
 /* ---- Volume Bar ----- */
 #volume-bar {
 	margin-right: 6px;
+	height: 24px;
 }
 
 /* Hide volume slider defaults */
@@ -304,6 +309,10 @@ input[type="button"]:focus {
 	font-size: 1em;
 	background-color: white;
 	padding: 10px;
+}
+
+#transcript p {
+	padding-bottom: .75em;
 }
 
 #transcript span:hover {
