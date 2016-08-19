@@ -13,7 +13,7 @@ var muteButton = document.getElementById("mute");
 var captionButton = document.getElementById("caption-button");
 var speed = document.getElementById("playback-speed");
 var volumeBar = document.getElementById("volume-bar");
-var fullScreen = document.getElementById("full-screen");
+var fullScreenButton = document.getElementById("full-screen");
 var controls = document.getElementById("video-controls");
 var cues = document.querySelectorAll("span.cue");
 var transcript = document.getElementById("transcript");
@@ -32,7 +32,7 @@ function initializeVideo() {
 	volumeBar.addEventListener("mouseup", volumeControl, false);
 	muteButton.addEventListener("click", mute, false);
 	speed.addEventListener("click", playBack, false);
-	fullScreen.addEventListener("click", screenSize, false);
+	fullScreenButton.addEventListener("click", screenSize, false);
 	videoBox.addEventListener("mouseleave", hideControls, false);
 	videoBox.addEventListener("mouseenter", showControls, false);
 	vid.addEventListener("playing", showProgress, false);
@@ -238,11 +238,11 @@ function highlightText() {
 /* ----- Clickable Transcript ----- */
 // Clicking on a phrase in the transcript jumps to that part of the video
 
-function goToCue() {
+function goToCue(event) {
 	//List all cues
 	var cueList = document.getElementsByClassName("cue");
 
-	function getCue(event) {
+	function getCue() {
 		// Target cue that is clicked on
 		var cueTime = event.target.getAttribute('data-start');
 		// Set video time to data-start time
